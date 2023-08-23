@@ -1,0 +1,131 @@
+
+
+O sistema deve cadastrar novos pacientes, registrando seus dados demográficos e relevantes para a avaliação, como lateralidade, medicamentos e resultados de exames.
+Também deve cadastrar os testes utilizados para a avaliação, os sintomas e os transtornos neurocognitivos.
+Ao longo da avaliação, o sistema deve permitir registrar os testes aplicados no paciente, os sintomas observados e o transtorno provável.
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+CREATE TABLE TIPO_IMPOSTO(idtipo_imposto INT NOT NULL AUTO_INCREMENT,
+	irrf1 DOUBLE(6,2),
+	pis1 DOUBLE(6,2),
+	cofins1 DOUBLE(6,2),
+	cssl1 DOUBLE(6,2),
+	issqn1 DOUBLE(6,2),
+	irrf2 DOUBLE(6,2),
+	pis2 DOUBLE(6,2),
+	cofins2 DOUBLE(6,2),
+	cssl2 DOUBLE(6,2),
+	issqn2 DOUBLE(6,2),
+	irrf3 DOUBLE(6,2),
+	pis3 DOUBLE(6,2),
+	cofins3 DOUBLE(6,2),
+	cssl3 DOUBLE(6,2),
+	issqn3 DOUBLE(6,2),
+	PRIMARY KEY (idtipo_imposto))
+
+CREATE TABLE PROCEDIMENTO(idprocedimento INT NOT NULL AUTO_INCREMENT,
+	codigo VARCHAR(15),
+	descricao VARCHAR(70),
+	PRIMARY KEY (idprocedimento))
+
+CREATE TABLE PACIENTE(idpaciente INT NOT NULL AUTO_INCREMENT,
+	nome VARCHAR(50),
+	PRIMARY KEY (idpaciente))
+
+CREATE TABLE PROFISSIONAL(idprofissional INT NOT NULL AUTO_INCREMENT,
+	nome VARCHAR(30),
+	email VARCHAR(20),
+	telefone VARCHAR(20),
+	endereco VARCHAR(70),
+	cpf VARCHAR(20),
+	conselho VARCHAR(10),
+	PRIMARY KEY (idprofissional))
+
+CREATE TABLE CONVENIO(idconvenio INT NOT NULL AUTO_INCREMENT,
+	nome VARCHAR(20),
+	inscricao VARCHAR(30),
+	desc_servico VARCHAR(50),
+	tipo_imposto INT,
+	senha VARCHAR(20),
+	PRIMARY KEY (idconvenio),
+	FOREIGN KEY(tipo_imposto) REFERENCES tipo_imposto(idtipo_imposto))
+
+
+CREATE TABLE VALORES_PROCEDIMENTOS(idvalores_procedimentos INT NOT NULL AUTO_INCREMENT,
+	procedimento INT,
+	convenio INT,
+	valor DOUBLE(6,2),
+	PRIMARY KEY (idvalores_procedimentos)
+	FOREIGN KEY(procedimento) REFERENCES procedimento(idprocedimento),
+	FOREIGN KEY(convenio) REFERENCES convenio(idconvenio))
+
+CREATE TABLE NOTA(idnota INT NOT NULL AUTO_INCREMENT,
+	profissional INT,
+	nome INT,
+	numero INT,
+	data DATE,
+	valor DOUBLE(6,2),
+	irrf DOUBLE(6,2),
+	pis DOUBLE(6,2),
+	cofins DOUBLE(6,2),
+	cssl DOUBLE(6,2),
+	issqn DOUBLE(6,2),
+	PRIMARY KEY (idnota),
+	FOREIGN KEY(profissional) REFERENCES profissional(idprofissional),
+	FOREIGN KEY(nome) REFERENCES paciente(idpaciente))
+
+
+
+
+
+
+
+
+
+
+RH
+
+O sistema deve:
+registrar os pagamentos feitos aos funcionários
+calcular os valores dos vales transporte e alimentação
+registrar antecipações de salários
+gerar recibos de pagamento dos vales e serviços extras
+calcular o valor total a ser pago
+
+O total deve ser acrescentado à tabela que informa as despesas dos profissionais no mês
+
+
+
+
+CREATE TABLE FUNCIONARIO(idfuncionario INT NOT NULL AUTO_INCREMENT,
+	vt DOUBLE(6,2),
+	vr DOUBLE(6,2));
+
+CREATE TABLE PAGAMENTO_FUNCIONARIO(idpagamento_funcionario INT NOT NULL AUTO_INCREMENT,
+	ano INT,
+	mes INT,
+	salario DOUBLE(6,2),
+	total_vt DOUBLE(6,2),
+	total_vr DOUBLE(6,2),
+	extra DOUBLE(6,2));
+
+CREATE TABLE DESPESA(iddespesa INT NOT NULL AUTO_INCREMENT,
+	ano INT,
+	mes INT,
+	pagamento_funcionario DOUBLE(6,2),
+	outros DOUBLE(6,2));

@@ -1,14 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package neuropsi.dao;
-
-/**
- *
- * @author 771000343
- */
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 public class Conexao {
-    
+    @SuppressWarnings("CallToPrintStackTrace")
+    public Connection getConnection(){
+        Connection conn=null;
+        
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        try{
+            conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/neuropsi","root",null);
+        }catch(SQLException e){
+            e.printStackTrace();
+            System.out.println(e);
+        }
+        return conn;
+    }
 }

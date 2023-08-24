@@ -5,10 +5,18 @@
  */
 package neuropsi.controller;
 
+import neuropsi.model.Paciente;
+
 /**
  *
  * @author 771000343
  */
 public class PacienteController {
-    
+
+    public PacienteController() {
+    }
+    public void cadastrarPaciente(String nome,String sexo,String lateralidade,String dn,String ln,String escolaridade,String curso,String profissao,String estado_civil,String filhos){
+        Paciente p=new Paciente(nome,sexo,lateralidade,dn,ln,escolaridade,curso,profissao,estado_civil,filhos);
+        p.cadastrarPaciente(p);
+    }
 }

@@ -9,6 +9,8 @@ package neuropsi.dao;
  *
  * @author 771000343
  */
-public class ExceptionDAO {
-    
+public class ExceptionDAO extends Exception{
+    public ExceptionDAO (String mensagem){
+        super(mensagem);
+    }
 }

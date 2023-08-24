@@ -4,7 +4,7 @@ import neuropsi.dao.ExceptionDAO;
 import neuropsi.dao.PacienteDAO;
 
 public class Paciente {
-    private String idpaciente""
+    private String idpaciente="";
     private String nome;
     private String sexo;
     private String lateralidade;

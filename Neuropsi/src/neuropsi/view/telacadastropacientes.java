@@ -4,7 +4,10 @@
  */
 package neuropsi.view;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import neuropsi.controller.PacienteController;
+import neuropsi.dao.ExceptionDAO;
 
 /**
  *
@@ -260,7 +263,11 @@ public class telacadastropacientes extends javax.swing.JFrame {
         String profissao=jTextField6.getText();
         String estado_civil=String.valueOf(jComboBox5.getSelectedItem());
         String filhos=String.valueOf(jComboBox6.getSelectedItem());
-        p.cadastrarPaciente(nome, sexo, lateralidade, dn, ln, escolaridade, curso, profissao, estado_civil, filhos);
+        try {
+            p.cadastrarPaciente(nome, sexo, lateralidade, dn, ln, escolaridade, curso, profissao, estado_civil, filhos);
+        } catch (ExceptionDAO ex) {
+            Logger.getLogger(telacadastropacientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

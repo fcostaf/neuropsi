@@ -254,8 +254,8 @@ public class telacadastropacientes extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         PacienteController p=new PacienteController();
         String nome=jTextField1.getText();
-        String sexo=String.valueOf(jComboBox1.getSelectedItem());
-        String lateralidade=String.valueOf(jComboBox2.getSelectedItem());
+        String sexo=String.valueOf(jComboBox1.getSelectedIndex());
+        String lateralidade=String.valueOf(jComboBox2.getSelectedIndex());
         String dn=jTextField2.getText();
         String ln=jTextField7.getText();
         String escolaridade=String.valueOf(jComboBox3.getSelectedItem())+":"+String.valueOf(jComboBox4.getSelectedItem());

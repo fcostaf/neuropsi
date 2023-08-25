@@ -11,7 +11,7 @@ public class PacienteDAO {
     }
     
     public void cadastrarPaciente(Paciente p) throws ExceptionDAO{
-        String sql="insert into paciente (nome,sexo,lateralidade,dn,ln,escolaridade,curso,profissao,estado_civil,filhos) values (?,?,?,?,?,?,?,?,?,?)";
+        String sql="insert into paciente (nome,sexo,lateralidade,dn,ln,escolaridade,curso,profissao,estado_civil,filhos,comentario) values (?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement stmt=null;
         Connection connection=null;
         try{
@@ -27,6 +27,7 @@ public class PacienteDAO {
             stmt.setString(8,p.getProfissao());
             stmt.setString(9,p.getEstado_civil());
             stmt.setString(10,p.getFilhos());
+            stmt.setString(11,p.getComentario());
             stmt.execute();
             
         }catch(SQLException e){

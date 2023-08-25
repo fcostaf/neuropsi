@@ -15,12 +15,12 @@ public class Paciente {
     private String profissao;
     private String estado_civil;
     private String filhos;
+    private String comentario;
 
     public Paciente() {
     }
 
-    public Paciente(String nome, String sexo, String lateralidade, String dn, String ln, String escolaridade, String curso, String profissao, String estado_civil, String filhos) {
-        this.idpaciente = idpaciente;
+    public Paciente(String nome, String sexo, String lateralidade, String dn, String ln, String escolaridade, String curso, String profissao, String estado_civil, String filhos, String comentario) {
         this.nome = nome;
         this.sexo = sexo;
         this.lateralidade = lateralidade;
@@ -31,7 +31,10 @@ public class Paciente {
         this.profissao = profissao;
         this.estado_civil = estado_civil;
         this.filhos = filhos;
+        this.comentario = comentario;
     }
+
+    
 
     public String getIdpaciente() {
         return idpaciente;
@@ -119,6 +122,14 @@ public class Paciente {
 
     public void setFilhos(String filhos) {
         this.filhos = filhos;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 
     

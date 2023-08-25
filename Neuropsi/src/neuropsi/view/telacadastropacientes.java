@@ -263,8 +263,9 @@ public class telacadastropacientes extends javax.swing.JFrame {
         String profissao=jTextField6.getText();
         String estado_civil=String.valueOf(jComboBox5.getSelectedItem());
         String filhos=String.valueOf(jComboBox6.getSelectedItem());
+        String comentario=jTextArea1.getText();
         try {
-            p.cadastrarPaciente(nome, sexo, lateralidade, dn, ln, escolaridade, curso, profissao, estado_civil, filhos);
+            p.cadastrarPaciente(nome, sexo, lateralidade, dn, ln, escolaridade, curso, profissao, estado_civil, filhos,comentario);
         } catch (ExceptionDAO ex) {
             Logger.getLogger(telacadastropacientes.class.getName()).log(Level.SEVERE, null, ex);
         }

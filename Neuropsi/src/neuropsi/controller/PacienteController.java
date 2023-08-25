@@ -16,8 +16,8 @@ public class PacienteController {
 
     public PacienteController() {
     }
-    public void cadastrarPaciente(String nome,String sexo,String lateralidade,String dn,String ln,String escolaridade,String curso,String profissao,String estado_civil,String filhos) throws ExceptionDAO{
-        Paciente p=new Paciente(nome,sexo,lateralidade,dn,ln,escolaridade,curso,profissao,estado_civil,filhos);
+    public void cadastrarPaciente(String nome,String sexo,String lateralidade,String dn,String ln,String escolaridade,String curso,String profissao,String estado_civil,String filhos,String comentario) throws ExceptionDAO{
+        Paciente p=new Paciente(nome,sexo,lateralidade,dn,ln,escolaridade,curso,profissao,estado_civil,filhos,comentario);
         p.cadastrarPaciente(p);
     }
 }

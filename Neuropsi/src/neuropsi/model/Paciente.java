@@ -1,5 +1,6 @@
 package neuropsi.model;
 
+import java.util.ArrayList;
 import neuropsi.dao.ExceptionDAO;
 import neuropsi.dao.PacienteDAO;
 
@@ -135,7 +136,10 @@ public class Paciente {
     
     
     public void cadastrarPaciente(Paciente p) throws ExceptionDAO{
-        PacienteDAO pdao=new PacienteDAO();
-        pdao.cadastrarPaciente(p);
+        new PacienteDAO().cadastrarPaciente(p);
+    }
+    
+    public ArrayList<Paciente> listarPaciente(String nome) throws ExceptionDAO{
+        return new PacienteDAO().listarPaciente(nome);
     }
 }

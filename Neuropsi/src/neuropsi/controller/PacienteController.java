@@ -27,6 +27,11 @@ public class PacienteController {
         p.alterarPaciente(p);
     }
     
+    public void excluirPaciente(String idpaciente) throws ExceptionDAO{
+        Paciente p=new Paciente(idpaciente);
+        p.excluirPaciente(p);
+    }
+    
     public ArrayList<Paciente> listarPaciente(String nome) throws ExceptionDAO{
         Paciente p=new Paciente();
         return p.listarPaciente(nome);

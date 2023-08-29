@@ -73,7 +73,7 @@ public class PacienteDAO {
     }
     
     public void excluirPaciente(int id) throws ExceptionDAO{
-        String sql="delete from paciente where id=?";
+        String sql="delete from paciente where idpaciente=?";
         PreparedStatement stmt=null;
         Connection connection=null;
         try{

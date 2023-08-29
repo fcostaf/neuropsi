@@ -8,6 +8,7 @@ package neuropsi.view;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import neuropsi.controller.PacienteController;
 import neuropsi.model.Paciente;
@@ -138,6 +139,8 @@ public class telaconsulta extends javax.swing.JFrame {
             String comentario=(String)jTableConsultaPaciente.getModel().getValueAt(jTableConsultaPaciente.getSelectedRow(),11);
             
             neuropsi.Neuropsi.selecionaDados(idpaciente, nome, sexo, lateralidade, dn, ln, escolaridade, curso, profissao, estado_civil, filhos, comentario);
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(this, nome+" // SELECIONAR");
         }
     }//GEN-LAST:event_jTableConsultaPacienteMouseClicked
     

@@ -49,6 +49,10 @@ public class Paciente {
         this.filhos = filhos;
         this.comentario = comentario;
     }
+
+    public Paciente(String idpaciente) {
+        this.idpaciente = idpaciente;
+    }
     
     
 
@@ -158,6 +162,11 @@ public class Paciente {
     
     public void alterarPaciente(Paciente p) throws ExceptionDAO{
         new PacienteDAO().alterarPaciente(p);
+    }
+    
+    public void excluirPaciente(Paciente p) throws ExceptionDAO{
+        int idpaciente=Integer.parseInt(p.idpaciente);
+        new PacienteDAO().excluirPaciente(idpaciente);
     }
     
     public ArrayList<Paciente> listarPaciente(String nome) throws ExceptionDAO{

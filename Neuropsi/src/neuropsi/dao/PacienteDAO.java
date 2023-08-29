@@ -42,7 +42,7 @@ public class PacienteDAO {
     }
     
     public void alterarPaciente(Paciente p) throws ExceptionDAO{
-        String sql="update paciente set nome=?,sexo=?,lateralidade=?,dn=?,ln=?,escolaridade=?,curso=?,profissao=?,estado_civil=?,filhos=?,comentario=?";
+        String sql="update paciente set nome=?,sexo=?,lateralidade=?,dn=?,ln=?,escolaridade=?,curso=?,profissao=?,estado_civil=?,filhos=?,comentario=? where idpaciente=?";
         PreparedStatement stmt=null;
         Connection connection=null;
         try{
@@ -59,6 +59,7 @@ public class PacienteDAO {
             stmt.setString(9,p.getEstado_civil());
             stmt.setString(10,p.getFilhos());
             stmt.setString(11,p.getComentario());
+            stmt.setString(12,p.getIdpaciente());
             stmt.execute();
         }catch(SQLException e){
             e.printStackTrace();
@@ -116,7 +117,7 @@ public class PacienteDAO {
                     p.setEstado_civil(rs.getString("estado_civil"));
                     p.setFilhos(rs.getString("filhos"));
                     p.setLateralidade(rs.getString("lateralidade"));
-                    p.setLn(rs.getString("lateralidade"));
+                    p.setLn(rs.getString("ln"));
                     p.setProfissao(rs.getString("profissao"));
                     p.setSexo(rs.getString("sexo"));
                     listaDePacientes.add(p);}}

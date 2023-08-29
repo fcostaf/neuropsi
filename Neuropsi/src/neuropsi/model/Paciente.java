@@ -5,7 +5,7 @@ import neuropsi.dao.ExceptionDAO;
 import neuropsi.dao.PacienteDAO;
 
 public class Paciente {
-    private String idpaciente="";
+    private String idpaciente;
     private String nome;
     private String sexo;
     private String lateralidade;
@@ -34,6 +34,23 @@ public class Paciente {
         this.filhos = filhos;
         this.comentario = comentario;
     }
+
+    public Paciente(String idpaciente, String nome, String sexo, String lateralidade, String dn, String ln, String escolaridade, String curso, String profissao, String estado_civil, String filhos, String comentario) {
+        this.idpaciente = idpaciente;
+        this.nome = nome;
+        this.sexo = sexo;
+        this.lateralidade = lateralidade;
+        this.dn = dn;
+        this.ln = ln;
+        this.escolaridade = escolaridade;
+        this.curso = curso;
+        this.profissao = profissao;
+        this.estado_civil = estado_civil;
+        this.filhos = filhos;
+        this.comentario = comentario;
+    }
+    
+    
 
     
 
@@ -137,6 +154,10 @@ public class Paciente {
     
     public void cadastrarPaciente(Paciente p) throws ExceptionDAO{
         new PacienteDAO().cadastrarPaciente(p);
+    }
+    
+    public void alterarPaciente(Paciente p) throws ExceptionDAO{
+        new PacienteDAO().alterarPaciente(p);
     }
     
     public ArrayList<Paciente> listarPaciente(String nome) throws ExceptionDAO{

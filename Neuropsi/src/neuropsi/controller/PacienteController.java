@@ -22,6 +22,11 @@ public class PacienteController {
         p.cadastrarPaciente(p);
     }
     
+    public void alterarPaciente(String idpaciente,String nome,String sexo,String lateralidade,String dn,String ln,String escolaridade,String curso,String profissao,String estado_civil,String filhos,String comentario) throws ExceptionDAO{
+        Paciente p=new Paciente(idpaciente,nome,sexo,lateralidade,dn,ln,escolaridade,curso,profissao,estado_civil,filhos,comentario);
+        p.alterarPaciente(p);
+    }
+    
     public ArrayList<Paciente> listarPaciente(String nome) throws ExceptionDAO{
         Paciente p=new Paciente();
         return p.listarPaciente(nome);

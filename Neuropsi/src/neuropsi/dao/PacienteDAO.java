@@ -91,7 +91,7 @@ public class PacienteDAO {
         }
     }
     
-    public ArrayList<Paciente> listarPaciente() throws ExceptionDAO{
+    public ArrayList<Paciente> listarPaciente(String nome) throws ExceptionDAO{
         ResultSet rs=null;
         Connection conn=null;
         PreparedStatement stmt=null;
@@ -99,7 +99,7 @@ public class PacienteDAO {
         ArrayList<Paciente> listaDePacientes=null;
         
         try{
-            String sql="select * from paciente";
+            String sql="select * from paciente where nome like '%"+nome+"%' order by nome";
             conn=new Conexao().getConnection();
             stmt=conn.prepareStatement(sql);
             rs=stmt.executeQuery();

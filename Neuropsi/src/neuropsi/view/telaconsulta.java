@@ -7,12 +7,14 @@ package neuropsi.view;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import neuropsi.controller.PacienteController;
 import neuropsi.model.Paciente;
 import neuropsi.Neuropsi;
+import static neuropsi.Neuropsi.tcad;
 
 /**
  *
@@ -154,8 +156,12 @@ public class telaconsulta extends javax.swing.JFrame {
             
             neuropsi.Neuropsi.selecionaDados(idpaciente, nome, sexo, lateralidade, dn, ln, escolaridade, curso, profissao, estado_civil, filhos, comentario);
             this.setVisible(false);
-            neuropsi.Neuropsi.t.selecionaDados();
-            neuropsi.Neuropsi.t.getjButtonCadastrar().setEnabled(false);
+            tcad.setVisible(true);
+            tcad.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            tcad.selecionaDados();
+            tcad.getjButtonCadastrar().setEnabled(false);
+            tcad.getjButtonAlterar().setEnabled(true);
+            tcad.getjButtonExcluir().setEnabled(true);
         }
     }//GEN-LAST:event_jTableConsultaPacienteMouseClicked
 

@@ -2,16 +2,19 @@ package neuropsi;
 
 import javax.swing.JFrame;
 import neuropsi.view.telacadastropacientes;
+import neuropsi.view.telainicial;
 
 public class Neuropsi {
 
     public static void main(String[] args) {
+        tinit.setVisible(true);
+        tinit.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        tcad.getjButtonAlterar().setEnabled(false);
+        tcad.getjButtonExcluir().setEnabled(false);
         
-        t.setVisible(true);
-        //t.setSize(800,800);
-        t.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-    public static telacadastropacientes t=new telacadastropacientes();
+    public static telacadastropacientes tcad=new telacadastropacientes();
+    public static telainicial tinit=new telainicial();
     public static String idpaciente="";
     public static String nome="";
     public static String sexo="";

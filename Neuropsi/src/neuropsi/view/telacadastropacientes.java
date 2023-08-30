@@ -144,6 +144,7 @@ public class telacadastropacientes extends javax.swing.JFrame {
             }
         });
 
+        jButtonExcluir.setForeground(new java.awt.Color(204, 0, 51));
         jButtonExcluir.setText("Excluir");
         jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,15 +234,14 @@ public class telacadastropacientes extends javax.swing.JFrame {
                                 .addComponent(jComboBoxFilhos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButtonCadastrar)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButtonAlterar)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButtonExcluir))
+                                    .addComponent(jButtonCadastrar)
                                     .addComponent(jButtonLimpar))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonBuscar)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButtonAlterar)
+                                    .addComponent(jButtonBuscar))
+                                .addGap(26, 26, 26)
+                                .addComponent(jButtonExcluir)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -295,14 +295,19 @@ public class telacadastropacientes extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jComboBoxFilhos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonBuscar)
-                    .addComponent(jButtonCadastrar)
-                    .addComponent(jButtonAlterar)
-                    .addComponent(jButtonExcluir))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonLimpar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonBuscar)
+                            .addComponent(jButtonCadastrar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonLimpar)
+                            .addComponent(jButtonAlterar)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jButtonExcluir)))
                 .addGap(52, 52, 52))
         );
 
@@ -349,7 +354,7 @@ public class telacadastropacientes extends javax.swing.JFrame {
         String nome=jTextFieldNome.getText();
         String sexo=String.valueOf(jComboBoxSexo.getSelectedItem());
         String lateralidade=String.valueOf(jComboBoxLateralidade.getSelectedItem());
-        String dn=jTextFieldDn.getText();
+        String dn=jTextFieldDn.getText()+"-"+jComboBoxMesDn.getSelectedItem()+"-"+jComboBoxDiaDn.getSelectedItem();
         String ln=jTextFieldLn.getText();
         String escolaridade=String.valueOf(jComboBoxEscolaridade1.getSelectedItem());//+":"+String.valueOf(jComboBoxEscolaridade2.getSelectedItem());
         String curso=jTextFieldCurso.getText();
@@ -369,6 +374,7 @@ public class telacadastropacientes extends javax.swing.JFrame {
         PacienteController p=new PacienteController();
         try {
             p.excluirPaciente(neuropsi.Neuropsi.idpaciente);
+            JOptionPane.showMessageDialog(this, jTextFieldNome+" excluído!");
         } catch (ExceptionDAO ex) {
             Logger.getLogger(telacadastropacientes.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -387,8 +393,11 @@ public class telacadastropacientes extends javax.swing.JFrame {
         jComboBoxFilhos.setSelectedIndex(0);
         jComboBoxLateralidade.setSelectedIndex(0);
         jComboBoxSexo.setSelectedIndex(0);
+        jComboBoxDiaDn.setSelectedIndex(0);
+        jComboBoxMesDn.setSelectedIndex(0);
         
         jButtonCadastrar.setEnabled(true);
+        jButtonAlterar.setEnabled(false);
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
     /**

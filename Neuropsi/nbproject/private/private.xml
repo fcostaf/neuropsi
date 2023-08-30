@@ -5,8 +5,10 @@
         <group>
             <file>file:/C:/Users/771000343/Desktop/Neuropsi/Neuropsi/src/neuropsi/Neuropsi.java</file>
             <file>file:/C:/Users/771000343/Desktop/Neuropsi/Neuropsi/src/neuropsi/model/Paciente.java</file>
+            <file>file:/C:/Users/771000343/Desktop/Neuropsi/Neuropsi/src/neuropsi/view/telainicial.java</file>
             <file>file:/C:/Users/771000343/Desktop/Neuropsi/Neuropsi/src/neuropsi/view/telaconsulta.java</file>
             <file>file:/C:/Users/771000343/Desktop/Neuropsi/Neuropsi/src/neuropsi/controller/PacienteController.java</file>
+            <file>file:/C:/Users/771000343/Desktop/Neuropsi/Neuropsi/src/neuropsi/view/telaavaliacao.java</file>
             <file>file:/C:/Users/771000343/Desktop/Neuropsi/Neuropsi/src/neuropsi/dao/PacienteDAO.java</file>
             <file>file:/C:/Users/771000343/Desktop/Neuropsi/Neuropsi/src/neuropsi/view/telacadastropacientes.java</file>
         </group>

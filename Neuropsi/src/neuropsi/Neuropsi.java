@@ -1,6 +1,7 @@
 package neuropsi;
 
 import javax.swing.JFrame;
+import neuropsi.view.telaavaliacao;
 import neuropsi.view.telacadastropacientes;
 import neuropsi.view.telainicial;
 
@@ -15,6 +16,7 @@ public class Neuropsi {
     }
     public static telacadastropacientes tcad=new telacadastropacientes();
     public static telainicial tinit=new telainicial();
+    public static telaavaliacao tava=new telaavaliacao();
     public static String idpaciente="";
     public static String nome="";
     public static String sexo="";

@@ -350,33 +350,39 @@ public class telacadastropacientes extends javax.swing.JFrame {
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
         PacienteController p=new PacienteController();
-        String idpaciente=neuropsi.Neuropsi.idpaciente;
-        String nome=jTextFieldNome.getText();
-        String sexo=String.valueOf(jComboBoxSexo.getSelectedItem());
-        String lateralidade=String.valueOf(jComboBoxLateralidade.getSelectedItem());
-        String dn=jTextFieldDn.getText()+"-"+jComboBoxMesDn.getSelectedItem()+"-"+jComboBoxDiaDn.getSelectedItem();
-        String ln=jTextFieldLn.getText();
-        String escolaridade=String.valueOf(jComboBoxEscolaridade1.getSelectedItem());//+":"+String.valueOf(jComboBoxEscolaridade2.getSelectedItem());
-        String curso=jTextFieldCurso.getText();
-        String profissao=jTextFieldProfissao.getText();
-        String estado_civil=String.valueOf(jComboBoxEstadoCivil.getSelectedItem());
-        String filhos=String.valueOf(jComboBoxFilhos.getSelectedItem());
-        String comentario=jTextAreaComentario.getText();
-        try {
-            p.alterarPaciente(idpaciente,nome, sexo, lateralidade, dn, ln, escolaridade, curso, profissao, estado_civil, filhos,comentario);
-            JOptionPane.showMessageDialog(this, "Alterado!");
-        } catch (ExceptionDAO ex) {
-            Logger.getLogger(telacadastropacientes.class.getName()).log(Level.SEVERE, null, ex);
+        int certeza=JOptionPane.showConfirmDialog(this, "Tem certeza de que deseja alterar?","Confirmação",JOptionPane.YES_NO_OPTION);
+        if(certeza==0){
+            String idpaciente=neuropsi.Neuropsi.idpaciente;
+            String nome=jTextFieldNome.getText();
+            String sexo=String.valueOf(jComboBoxSexo.getSelectedItem());
+            String lateralidade=String.valueOf(jComboBoxLateralidade.getSelectedItem());
+            String dn=jTextFieldDn.getText()+"-"+jComboBoxMesDn.getSelectedItem()+"-"+jComboBoxDiaDn.getSelectedItem();
+            String ln=jTextFieldLn.getText();
+            String escolaridade=String.valueOf(jComboBoxEscolaridade1.getSelectedItem());//+":"+String.valueOf(jComboBoxEscolaridade2.getSelectedItem());
+            String curso=jTextFieldCurso.getText();
+            String profissao=jTextFieldProfissao.getText();
+            String estado_civil=String.valueOf(jComboBoxEstadoCivil.getSelectedItem());
+            String filhos=String.valueOf(jComboBoxFilhos.getSelectedItem());
+            String comentario=jTextAreaComentario.getText();
+            try {
+                p.alterarPaciente(idpaciente,nome, sexo, lateralidade, dn, ln, escolaridade, curso, profissao, estado_civil, filhos,comentario);
+                JOptionPane.showMessageDialog(this, "Alterado!");
+            } catch (ExceptionDAO ex) {
+                Logger.getLogger(telacadastropacientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
         PacienteController p=new PacienteController();
-        try {
-            p.excluirPaciente(neuropsi.Neuropsi.idpaciente);
-            JOptionPane.showMessageDialog(this, jTextFieldNome+" excluído!");
-        } catch (ExceptionDAO ex) {
-            Logger.getLogger(telacadastropacientes.class.getName()).log(Level.SEVERE, null, ex);
+        int certeza=JOptionPane.showConfirmDialog(this, "Tem certeza de que deseja excluir?","Confirmação",JOptionPane.YES_NO_OPTION);
+        if(certeza==0){
+            try {
+                p.excluirPaciente(neuropsi.Neuropsi.idpaciente);
+                JOptionPane.showMessageDialog(this, jTextFieldNome+" excluído!");
+            } catch (ExceptionDAO ex) {
+                Logger.getLogger(telacadastropacientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
@@ -398,6 +404,7 @@ public class telacadastropacientes extends javax.swing.JFrame {
         
         jButtonCadastrar.setEnabled(true);
         jButtonAlterar.setEnabled(false);
+        jButtonExcluir.setEnabled(false);
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
     /**

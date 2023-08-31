@@ -5,6 +5,8 @@
  */
 package neuropsi.view;
 
+import neuropsi.controller.SintomaController;
+
 /**
  *
  * @author 771000343
@@ -27,21 +29,344 @@ public class telaavaliacao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jCheckBoxRaciocinio = new javax.swing.JCheckBox();
+        jCheckBoxFuncExecutivas = new javax.swing.JCheckBox();
+        jButtonEnviarQueixas = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jComboBoxMemRecente = new javax.swing.JComboBox<>();
+        jComboBoxAltPersonalidade = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jComboBoxLinguagem = new javax.swing.JComboBox<>();
+        jCheckBoxMemRecente = new javax.swing.JCheckBox();
+        jComboBoxOrientEspacial = new javax.swing.JComboBox<>();
+        jCheckBoxAltPersonalidade = new javax.swing.JCheckBox();
+        jComboBoxOrientTemporal = new javax.swing.JComboBox<>();
+        jCheckBoxLinguagem = new javax.swing.JCheckBox();
+        jComboBoxRaciocinio = new javax.swing.JComboBox<>();
+        jCheckBoxOrientEspacial = new javax.swing.JCheckBox();
+        jComboBoxFuncExecutivas = new javax.swing.JComboBox<>();
+        jCheckBoxOrientTemporal = new javax.swing.JCheckBox();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextAreaQueixas = new javax.swing.JTextArea();
+        jCheckBoxVisuoconstrucao = new javax.swing.JCheckBox();
+        jComboBoxVisuoconstrucao = new javax.swing.JComboBox<>();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jCheckBoxRaciocinio.setText("raciocínio");
+
+        jCheckBoxFuncExecutivas.setText("funções executivas");
+
+        jButtonEnviarQueixas.setText("Enviar");
+        jButtonEnviarQueixas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEnviarQueixasActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("GRAU");
+
+        jComboBoxMemRecente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Leve", "Moderado", "Severo" }));
+
+        jComboBoxAltPersonalidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Leve", "Moderado", "Severo" }));
+
+        jLabel1.setText("SINTOMAS");
+
+        jComboBoxLinguagem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Leve", "Moderado", "Severo" }));
+
+        jCheckBoxMemRecente.setText("memória recente");
+        jCheckBoxMemRecente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMemRecenteActionPerformed(evt);
+            }
+        });
+
+        jComboBoxOrientEspacial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Leve", "Moderado", "Severo" }));
+
+        jCheckBoxAltPersonalidade.setText("alteração de personalidade");
+
+        jComboBoxOrientTemporal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Leve", "Moderado", "Severo" }));
+
+        jCheckBoxLinguagem.setText("linguagem");
+
+        jComboBoxRaciocinio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Leve", "Moderado", "Severo" }));
+
+        jCheckBoxOrientEspacial.setText("orientação espacial");
+
+        jComboBoxFuncExecutivas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Leve", "Moderado", "Severo" }));
+
+        jCheckBoxOrientTemporal.setText("orientação temporal");
+        jCheckBoxOrientTemporal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxOrientTemporalActionPerformed(evt);
+            }
+        });
+
+        jTextAreaQueixas.setColumns(20);
+        jTextAreaQueixas.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaQueixas);
+
+        jCheckBoxVisuoconstrucao.setText("visuoconstrução");
+        jCheckBoxVisuoconstrucao.setActionCommand("");
+        jCheckBoxVisuoconstrucao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxVisuoconstrucaoActionPerformed(evt);
+            }
+        });
+
+        jComboBoxVisuoconstrucao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Leve", "Moderado", "Severo" }));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBoxOrientEspacial)
+                            .addComponent(jCheckBoxOrientTemporal)
+                            .addComponent(jCheckBoxRaciocinio)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(56, 56, 56)
+                                .addComponent(jButtonEnviarQueixas))
+                            .addComponent(jCheckBoxFuncExecutivas)
+                            .addComponent(jCheckBoxVisuoconstrucao)
+                            .addComponent(jCheckBoxMemRecente)
+                            .addComponent(jCheckBoxAltPersonalidade)
+                            .addComponent(jCheckBoxLinguagem)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(jLabel1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jComboBoxAltPersonalidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxMemRecente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxLinguagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxOrientEspacial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxOrientTemporal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxRaciocinio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxFuncExecutivas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxVisuoconstrucao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(75, 75, 75)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(330, 330, 330))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBoxMemRecente)
+                            .addComponent(jComboBoxMemRecente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBoxAltPersonalidade)
+                            .addComponent(jComboBoxAltPersonalidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBoxLinguagem)
+                            .addComponent(jComboBoxLinguagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBoxOrientEspacial)
+                            .addComponent(jComboBoxOrientEspacial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBoxOrientTemporal)
+                            .addComponent(jComboBoxOrientTemporal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBoxRaciocinio)
+                            .addComponent(jComboBoxRaciocinio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBoxFuncExecutivas)
+                            .addComponent(jComboBoxFuncExecutivas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBoxVisuoconstrucao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCheckBoxVisuoconstrucao))))
+                .addGap(59, 59, 59)
+                .addComponent(jButtonEnviarQueixas)
+                .addContainerGap(69, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Queixas", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonEnviarQueixasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnviarQueixasActionPerformed
+        /*int sintomas[]=new int[8];
+        String graus[]=new String[8];
+        if(jCheckBoxMemRecente.isSelected()){
+            sintomas[0]=1;
+        }else{sintomas[0]=0;}
+        if(jCheckBoxAltPersonalidade.isSelected()){
+            sintomas[1]=1;
+        }else{sintomas[1]=0;}
+        if(jCheckBoxLinguagem.isSelected()){
+            sintomas[2]=1;
+        }else{sintomas[2]=0;}
+        if(jCheckBoxOrientEspacial.isSelected()){
+            sintomas[3]=1;
+        }else{sintomas[3]=0;}
+        if(jCheckBoxOrientTemporal.isSelected()){
+            sintomas[4]=1;
+        }else{sintomas[4]=0;}
+        if(jCheckBoxRaciocinio.isSelected()){
+            sintomas[5]=1;
+        }else{sintomas[5]=0;}
+        if(jCheckBoxFuncExecutivas.isSelected()){
+            sintomas[6]=1;
+        }else{sintomas[6]=0;}
+        if(jCheckBoxVisuoconstrucao.isSelected()){
+            sintomas[7]=1;
+        }else{sintomas[7]=0;}
+
+        switch (jComboBoxMemRecente.getSelectedIndex()) {
+            case 0:
+            graus[0]="LEVE";
+            break;
+            case 1:
+            graus[0]="MODERADO";
+            break;
+            default:
+            graus[0]="SEVERO";
+            break;
+        }
+
+        switch (jComboBoxAltPersonalidade.getSelectedIndex()) {
+            case 0:
+            graus[1]="LEVE";
+            break;
+            case 1:
+            graus[1]="MODERADO";
+            break;
+            default:
+            graus[1]="SEVERO";
+            break;
+        }
+
+        switch (jComboBoxLinguagem.getSelectedIndex()) {
+            case 0:
+            graus[2]="LEVE";
+            break;
+            case 1:
+            graus[2]="MODERADO";
+            break;
+            default:
+            graus[2]="SEVERO";
+            break;
+        }
+
+        switch (jComboBoxOrientEspacial.getSelectedIndex()) {
+            case 0:
+            graus[3]="LEVE";
+            break;
+            case 1:
+            graus[3]="MODERADO";
+            break;
+            default:
+            graus[3]="SEVERO";
+            break;
+        }
+
+        switch (jComboBoxOrientTemporal.getSelectedIndex()) {
+            case 0:
+            graus[4]="LEVE";
+            break;
+            case 1:
+            graus[4]="MODERADO";
+            break;
+            default:
+            graus[4]="SEVERO";
+            break;
+        }
+
+        switch (jComboBoxRaciocinio.getSelectedIndex()) {
+            case 0:
+            graus[5]="LEVE";
+            break;
+            case 1:
+            graus[5]="MODERADO";
+            break;
+            default:
+            graus[5]="SEVERO";
+            break;
+        }
+
+        switch (jComboBoxFuncExecutivas.getSelectedIndex()) {
+            case 0:
+            graus[6]="LEVE";
+            break;
+            case 1:
+            graus[6]="MODERADO";
+            break;
+            default:
+            graus[6]="SEVERO";
+            break;
+        }
+        
+        switch (jComboBoxVisuoconstrucao.getSelectedIndex()) {
+            case 0:
+            graus[6]="LEVE";
+            break;
+            case 1:
+            graus[6]="MODERADO";
+            break;
+            default:
+            graus[6]="SEVERO";
+            break;
+        }
+        SintomaController listaSintomas=new SintomaController();
+        String texto=listaSintomas.mostrarSintomas(sintomas, graus);
+        jTextAreaQueixas.setText(texto);
+
+        String textoGravar=jTextAreaQueixas.getText();
+        SintomaController gravaSintomas=new SintomaController();
+        gravaSintomas.gravarSintomas(textoGravar);*/
+    }//GEN-LAST:event_jButtonEnviarQueixasActionPerformed
+
+    private void jCheckBoxMemRecenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMemRecenteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxMemRecenteActionPerformed
+
+    private void jCheckBoxOrientTemporalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxOrientTemporalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxOrientTemporalActionPerformed
+
+    private void jCheckBoxVisuoconstrucaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxVisuoconstrucaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxVisuoconstrucaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +404,31 @@ public class telaavaliacao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonEnviarQueixas;
+    private javax.swing.JCheckBox jCheckBox5;
+    private javax.swing.JCheckBox jCheckBoxAltPersonalidade;
+    private javax.swing.JCheckBox jCheckBoxFuncExecutivas;
+    private javax.swing.JCheckBox jCheckBoxLinguagem;
+    private javax.swing.JCheckBox jCheckBoxMemRecente;
+    private javax.swing.JCheckBox jCheckBoxOrientEspacial;
+    private javax.swing.JCheckBox jCheckBoxOrientTemporal;
+    private javax.swing.JCheckBox jCheckBoxRaciocinio;
+    private javax.swing.JCheckBox jCheckBoxVisuoconstrucao;
+    private javax.swing.JComboBox<String> jComboBoxAltPersonalidade;
+    private javax.swing.JComboBox<String> jComboBoxFuncExecutivas;
+    private javax.swing.JComboBox<String> jComboBoxLinguagem;
+    private javax.swing.JComboBox<String> jComboBoxMemRecente;
+    private javax.swing.JComboBox<String> jComboBoxOrientEspacial;
+    private javax.swing.JComboBox<String> jComboBoxOrientTemporal;
+    private javax.swing.JComboBox<String> jComboBoxRaciocinio;
+    private javax.swing.JComboBox<String> jComboBoxVisuoconstrucao;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextArea jTextAreaQueixas;
     // End of variables declaration//GEN-END:variables
 }

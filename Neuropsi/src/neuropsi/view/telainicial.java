@@ -7,6 +7,7 @@ package neuropsi.view;
 
 import javax.swing.JFrame;
 import static neuropsi.Neuropsi.tcad;
+import static neuropsi.Neuropsi.tava;
 
 /**
  *
@@ -43,6 +44,11 @@ public class telainicial extends javax.swing.JFrame {
         });
 
         jButtonAvaliacao.setText("AVALIAÇÃO");
+        jButtonAvaliacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAvaliacaoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -71,6 +77,10 @@ public class telainicial extends javax.swing.JFrame {
     private void jButtonCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroActionPerformed
         tcad.setVisible(true);
     }//GEN-LAST:event_jButtonCadastroActionPerformed
+
+    private void jButtonAvaliacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAvaliacaoActionPerformed
+        tava.setVisible(true);
+    }//GEN-LAST:event_jButtonAvaliacaoActionPerformed
 
     /**
      * @param args the command line arguments

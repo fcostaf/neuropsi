@@ -1,24 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package neuropsi.view;
 
 import javax.swing.JFrame;
+import neuropsi.Neuropsi;
 import static neuropsi.Neuropsi.tcad;
 import static neuropsi.Neuropsi.tava;
+import static neuropsi.Neuropsi.ttra;
 
 /**
  *
  * @author 771000343
  */
-public class telainicial extends javax.swing.JFrame {
+public class Telainicial extends javax.swing.JFrame {
 
     /**
      * Creates new form telainicial
      */
-    public telainicial() {
+    public Telainicial() {
         initComponents();
     }
 
@@ -33,20 +31,28 @@ public class telainicial extends javax.swing.JFrame {
 
         jButtonCadastro = new javax.swing.JButton();
         jButtonAvaliacao = new javax.swing.JButton();
+        jButtonTranstornos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButtonCadastro.setText("CADASTRO");
+        jButtonCadastro.setText("CADASTRO PACIENTES");
         jButtonCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCadastroActionPerformed(evt);
             }
         });
 
-        jButtonAvaliacao.setText("AVALIAÇÃO");
+        jButtonAvaliacao.setText("AVALIAÇÕES");
         jButtonAvaliacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAvaliacaoActionPerformed(evt);
+            }
+        });
+
+        jButtonTranstornos.setText("TRANSTORNOS");
+        jButtonTranstornos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTranstornosActionPerformed(evt);
             }
         });
 
@@ -57,9 +63,10 @@ public class telainicial extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonTranstornos)
                     .addComponent(jButtonAvaliacao)
                     .addComponent(jButtonCadastro))
-                .addContainerGap(475, Short.MAX_VALUE))
+                .addContainerGap(416, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -67,8 +74,10 @@ public class telainicial extends javax.swing.JFrame {
                 .addGap(96, 96, 96)
                 .addComponent(jButtonCadastro)
                 .addGap(18, 18, 18)
+                .addComponent(jButtonTranstornos)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonAvaliacao)
-                .addContainerGap(441, Short.MAX_VALUE))
+                .addContainerGap(400, Short.MAX_VALUE))
         );
 
         pack();
@@ -81,6 +90,10 @@ public class telainicial extends javax.swing.JFrame {
     private void jButtonAvaliacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAvaliacaoActionPerformed
         tava.setVisible(true);
     }//GEN-LAST:event_jButtonAvaliacaoActionPerformed
+
+    private void jButtonTranstornosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTranstornosActionPerformed
+        ttra.setVisible(true);
+    }//GEN-LAST:event_jButtonTranstornosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -99,20 +112,21 @@ public class telainicial extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(telainicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Telainicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(telainicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Telainicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(telainicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Telainicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(telainicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Telainicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new telainicial().setVisible(true);
+                new Telainicial().setVisible(true);
             }
         });
     }
@@ -120,5 +134,6 @@ public class telainicial extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAvaliacao;
     private javax.swing.JButton jButtonCadastro;
+    private javax.swing.JButton jButtonTranstornos;
     // End of variables declaration//GEN-END:variables
 }

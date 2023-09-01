@@ -26,10 +26,11 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jButtonTranstornos" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonAvaliacao" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonCadastro" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="475" max="32767" attributes="0"/>
+              <EmptySpace pref="416" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -39,8 +40,10 @@
               <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
               <Component id="jButtonCadastro" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jButtonTranstornos" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jButtonAvaliacao" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="441" max="32767" attributes="0"/>
+              <EmptySpace pref="400" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -48,7 +51,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="jButtonCadastro">
       <Properties>
-        <Property name="text" type="java.lang.String" value="CADASTRO"/>
+        <Property name="text" type="java.lang.String" value="CADASTRO PACIENTES"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCadastroActionPerformed"/>
@@ -56,10 +59,18 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonAvaliacao">
       <Properties>
-        <Property name="text" type="java.lang.String" value="AVALIA&#xc7;&#xc3;O"/>
+        <Property name="text" type="java.lang.String" value="AVALIA&#xc7;&#xd5;ES"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAvaliacaoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonTranstornos">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="TRANSTORNOS"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonTranstornosActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

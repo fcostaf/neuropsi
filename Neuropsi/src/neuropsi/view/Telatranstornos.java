@@ -5,16 +5,29 @@
  */
 package neuropsi.view;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import neuropsi.controller.SintomaController;
+import neuropsi.dao.ExceptionDAO;
+
 /**
  *
  * @author 771000343
  */
-public class telastranstornos extends javax.swing.JFrame {
+public class Telatranstornos extends javax.swing.JFrame {
 
     /**
      * Creates new form telasintomas
      */
-    public telastranstornos() {
+    public Telatranstornos() {
         initComponents();
     }
 
@@ -31,7 +44,7 @@ public class telastranstornos extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextFieldSintoma = new javax.swing.JTextField();
+        jTextFieldNome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaDescricao = new javax.swing.JTextArea();
@@ -40,6 +53,7 @@ public class telastranstornos extends javax.swing.JFrame {
         jButtonAlterar = new javax.swing.JButton();
         jButtonExcluir = new javax.swing.JButton();
         jButtonLimpar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,9 +61,9 @@ public class telastranstornos extends javax.swing.JFrame {
 
         jLabel2.setText("Sintoma:");
 
-        jTextFieldSintoma.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldSintomaActionPerformed(evt);
+                jTextFieldNomeActionPerformed(evt);
             }
         });
 
@@ -95,6 +109,13 @@ public class telastranstornos extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Fechar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -110,23 +131,26 @@ public class telastranstornos extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextFieldSintoma))
+                                .addComponent(jTextFieldNome))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jButtonCadastrar)
-                                            .addComponent(jButtonLimpar))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jButtonAlterar)
-                                            .addComponent(jButtonBuscar))
-                                        .addGap(26, 26, 26)
-                                        .addComponent(jButtonExcluir))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(425, Short.MAX_VALUE))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(72, 72, 72)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonLimpar)
+                            .addComponent(jButtonCadastrar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonBuscar)
+                            .addComponent(jButtonExcluir)
+                            .addComponent(jButtonAlterar))
+                        .addGap(67, 67, 67)))
+                .addGap(91, 91, 91))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(403, 403, 403))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,25 +160,28 @@ public class telastranstornos extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextFieldSintoma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
+                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(46, 46, 46)
+                        .addComponent(jButton1)
+                        .addContainerGap(170, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonBuscar)
                             .addComponent(jButtonCadastrar))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonLimpar)
-                            .addComponent(jButtonAlterar)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jButtonExcluir)))
-                .addContainerGap(146, Short.MAX_VALUE))
+                            .addComponent(jButtonAlterar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonExcluir)
+                        .addGap(262, 262, 262))))
         );
 
         jTabbedPane1.addTab("Cadastro sintomas", jPanel1);
@@ -179,94 +206,68 @@ public class telastranstornos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldSintomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSintomaActionPerformed
+    private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldSintomaActionPerformed
+    }//GEN-LAST:event_jTextFieldNomeActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        PacienteController p=new PacienteController();
+        SintomaController sc=new SintomaController();
         String nome=jTextFieldNome.getText();
-        String sexo=String.valueOf(jComboBoxSexo.getSelectedItem());
-        String lateralidade=String.valueOf(jComboBoxLateralidade.getSelectedItem());
-        String dn=jTextFieldDn.getText()+"-"+jComboBoxMesDn.getSelectedItem()+"-"+jComboBoxDiaDn.getSelectedItem();
-        String ln=jTextFieldLn.getText();
-        String escolaridade=String.valueOf(jComboBoxEscolaridade1.getSelectedItem());//+":"+String.valueOf(jComboBoxEscolaridade2.getSelectedItem());
-        String curso=jTextFieldCurso.getText();
-        String profissao=jTextFieldProfissao.getText();
-        String estado_civil=String.valueOf(jComboBoxEstadoCivil.getSelectedItem());
-        String filhos=String.valueOf(jComboBoxFilhos.getSelectedItem());
-        String comentario=jTextAreaComentario.getText();
+        String descricao=jTextAreaDescricao.getText();
         try {
-            p.cadastrarPaciente(nome, sexo, lateralidade, dn, ln, escolaridade, curso, profissao, estado_civil, filhos,comentario);
+            sc.cadastrarSintoma(nome,descricao);
             JOptionPane.showMessageDialog(this, "Cadastrado!");
         } catch (ExceptionDAO ex) {
-            Logger.getLogger(telacadastropacientes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Telatranstornos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-        telaconsulta t=new telaconsulta();
+        Telaconsultasintoma t=new Telaconsultasintoma();
         t.setVisible(true);
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
-        PacienteController p=new PacienteController();
+        SintomaController sc=new SintomaController();
         int certeza=JOptionPane.showConfirmDialog(this, "Tem certeza de que deseja alterar?","Confirmação",JOptionPane.YES_NO_OPTION);
         if(certeza==0){
-            String idpaciente=neuropsi.Neuropsi.idpaciente;
+            String idsintoma=neuropsi.Neuropsi.idsintoma;
             String nome=jTextFieldNome.getText();
-            String sexo=String.valueOf(jComboBoxSexo.getSelectedItem());
-            String lateralidade=String.valueOf(jComboBoxLateralidade.getSelectedItem());
-            String dn=jTextFieldDn.getText()+"-"+jComboBoxMesDn.getSelectedItem()+"-"+jComboBoxDiaDn.getSelectedItem();
-            String ln=jTextFieldLn.getText();
-            String escolaridade=String.valueOf(jComboBoxEscolaridade1.getSelectedItem());//+":"+String.valueOf(jComboBoxEscolaridade2.getSelectedItem());
-            String curso=jTextFieldCurso.getText();
-            String profissao=jTextFieldProfissao.getText();
-            String estado_civil=String.valueOf(jComboBoxEstadoCivil.getSelectedItem());
-            String filhos=String.valueOf(jComboBoxFilhos.getSelectedItem());
-            String comentario=jTextAreaComentario.getText();
+            String descricao=jTextAreaDescricao.getText();
             try {
-                p.alterarPaciente(idpaciente,nome, sexo, lateralidade, dn, ln, escolaridade, curso, profissao, estado_civil, filhos,comentario);
+                sc.alterarSintoma(idsintoma,nome,descricao);
                 JOptionPane.showMessageDialog(this, "Alterado!");
             } catch (ExceptionDAO ex) {
-                Logger.getLogger(telacadastropacientes.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Telatranstornos.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
-        PacienteController p=new PacienteController();
+        SintomaController sc=new SintomaController();
         int certeza=JOptionPane.showConfirmDialog(this, "Tem certeza de que deseja excluir?","Confirmação",JOptionPane.YES_NO_OPTION);
         if(certeza==0){
             try {
-                p.excluirPaciente(neuropsi.Neuropsi.idpaciente);
+                sc.excluirSintoma(neuropsi.Neuropsi.idsintoma);
                 JOptionPane.showMessageDialog(this, jTextFieldNome+" excluído!");
             } catch (ExceptionDAO ex) {
-                Logger.getLogger(telacadastropacientes.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Telatranstornos.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
         jTextFieldNome.setText("");
-        jTextAreaComentario.setText("");
-        jTextFieldCurso.setText("");
-        jTextFieldDn.setText("");
-        jTextFieldLn.setText("");
-        jTextFieldProfissao.setText("");
-
-        jComboBoxEscolaridade1.setSelectedIndex(0);
-        jComboBoxEstadoCivil.setSelectedIndex(0);
-        jComboBoxFilhos.setSelectedIndex(0);
-        jComboBoxLateralidade.setSelectedIndex(0);
-        jComboBoxSexo.setSelectedIndex(0);
-        jComboBoxDiaDn.setSelectedIndex(0);
-        jComboBoxMesDn.setSelectedIndex(0);
+        jTextAreaDescricao.setText("");
 
         jButtonCadastrar.setEnabled(true);
         jButtonAlterar.setEnabled(false);
         jButtonExcluir.setEnabled(false);
     }//GEN-LAST:event_jButtonLimparActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,26 +286,29 @@ public class telastranstornos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(telastranstornos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Telatranstornos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(telastranstornos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Telatranstornos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(telastranstornos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Telatranstornos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(telastranstornos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Telatranstornos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new telastranstornos().setVisible(true);
+                new Telatranstornos().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonCadastrar;
@@ -317,6 +321,117 @@ public class telastranstornos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextAreaDescricao;
-    private javax.swing.JTextField jTextFieldSintoma;
+    private javax.swing.JTextField jTextFieldNome;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getjButtonAlterar() {
+        return jButtonAlterar;
+    }
+
+    public void setjButtonAlterar(JButton jButtonAlterar) {
+        this.jButtonAlterar = jButtonAlterar;
+    }
+
+    public JButton getjButtonBuscar() {
+        return jButtonBuscar;
+    }
+
+    public void setjButtonBuscar(JButton jButtonBuscar) {
+        this.jButtonBuscar = jButtonBuscar;
+    }
+
+    public JButton getjButtonCadastrar() {
+        return jButtonCadastrar;
+    }
+
+    public void setjButtonCadastrar(JButton jButtonCadastrar) {
+        this.jButtonCadastrar = jButtonCadastrar;
+    }
+
+    public JButton getjButtonExcluir() {
+        return jButtonExcluir;
+    }
+
+    public void setjButtonExcluir(JButton jButtonExcluir) {
+        this.jButtonExcluir = jButtonExcluir;
+    }
+
+    public JButton getjButtonLimpar() {
+        return jButtonLimpar;
+    }
+
+    public void setjButtonLimpar(JButton jButtonLimpar) {
+        this.jButtonLimpar = jButtonLimpar;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JTabbedPane getjTabbedPane1() {
+        return jTabbedPane1;
+    }
+
+    public void setjTabbedPane1(JTabbedPane jTabbedPane1) {
+        this.jTabbedPane1 = jTabbedPane1;
+    }
+
+    public JTextArea getjTextAreaDescricao() {
+        return jTextAreaDescricao;
+    }
+
+    public void setjTextAreaDescricao(JTextArea jTextAreaDescricao) {
+        this.jTextAreaDescricao = jTextAreaDescricao;
+    }
+
+    public JTextField getjTextFieldNome() {
+        return jTextFieldNome;
+    }
+
+    public void setjTextFieldNome(JTextField jTextFieldNome) {
+        this.jTextFieldNome = jTextFieldNome;
+    }
+    
+    public void selecionaDadosSintomas(){
+        getjTextFieldNome().setText(neuropsi.Neuropsi.nome);
+        getjTextAreaDescricao().setText(neuropsi.Neuropsi.descricao);
+    }
+
+
 }

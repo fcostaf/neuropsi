@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 31/08/2023 às 16:38
+-- Tempo de geração: 01/09/2023 às 16:55
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `neuropsi`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `citacao`
+--
+
+CREATE TABLE `citacao` (
+  `idcitacao` int(11) NOT NULL,
+  `fonte` varchar(100) DEFAULT NULL,
+  `descricao` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `citacao_tag`
+--
+
+CREATE TABLE `citacao_tag` (
+  `idcitacao_tag` int(11) NOT NULL,
+  `citacao` int(11) DEFAULT NULL,
+  `tag` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -78,6 +102,17 @@ CREATE TABLE `sintoma` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `tag`
+--
+
+CREATE TABLE `tag` (
+  `idtag` int(11) NOT NULL,
+  `descricao` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `teste`
 --
 
@@ -114,6 +149,20 @@ CREATE TABLE `transtorno` (
 --
 
 --
+-- Índices de tabela `citacao`
+--
+ALTER TABLE `citacao`
+  ADD PRIMARY KEY (`idcitacao`);
+
+--
+-- Índices de tabela `citacao_tag`
+--
+ALTER TABLE `citacao_tag`
+  ADD PRIMARY KEY (`idcitacao_tag`),
+  ADD KEY `citacao_tag_citacao_idx` (`citacao`),
+  ADD KEY `citacao_tag_tag_idx` (`tag`);
+
+--
 -- Índices de tabela `paciente`
 --
 ALTER TABLE `paciente`
@@ -132,6 +181,12 @@ ALTER TABLE `paciente_sintoma`
 --
 ALTER TABLE `sintoma`
   ADD PRIMARY KEY (`idsintoma`);
+
+--
+-- Índices de tabela `tag`
+--
+ALTER TABLE `tag`
+  ADD PRIMARY KEY (`idtag`);
 
 --
 -- Índices de tabela `teste`
@@ -158,6 +213,18 @@ ALTER TABLE `transtorno`
 --
 
 --
+-- AUTO_INCREMENT de tabela `citacao`
+--
+ALTER TABLE `citacao`
+  MODIFY `idcitacao` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `citacao_tag`
+--
+ALTER TABLE `citacao_tag`
+  MODIFY `idcitacao_tag` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `paciente`
 --
 ALTER TABLE `paciente`
@@ -174,6 +241,12 @@ ALTER TABLE `paciente_sintoma`
 --
 ALTER TABLE `sintoma`
   MODIFY `idsintoma` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `tag`
+--
+ALTER TABLE `tag`
+  MODIFY `idtag` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `teste`
@@ -196,6 +269,13 @@ ALTER TABLE `transtorno`
 --
 -- Restrições para tabelas despejadas
 --
+
+--
+-- Restrições para tabelas `citacao_tag`
+--
+ALTER TABLE `citacao_tag`
+  ADD CONSTRAINT `citacao_tag_citacao` FOREIGN KEY (`citacao`) REFERENCES `citacao` (`idcitacao`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `citacao_tag_tag` FOREIGN KEY (`tag`) REFERENCES `tag` (`idtag`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Restrições para tabelas `paciente_sintoma`

@@ -48,6 +48,7 @@ public class Telaavaliacao extends javax.swing.JFrame {
         jTextAreaQueixas = new javax.swing.JTextArea();
         jCheckBoxVisuoconstrucao = new javax.swing.JCheckBox();
         jComboBoxVisuoconstrucao = new javax.swing.JComboBox<>();
+        jButtonFechar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,6 +115,13 @@ public class Telaavaliacao extends javax.swing.JFrame {
 
         jComboBoxVisuoconstrucao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Leve", "Moderado", "Severo" }));
 
+        jButtonFechar.setText("Fechar");
+        jButtonFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFecharActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -151,6 +159,10 @@ public class Telaavaliacao extends javax.swing.JFrame {
                 .addGap(75, 75, 75)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(330, 330, 330))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(451, 451, 451)
+                .addComponent(jButtonFechar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +208,9 @@ public class Telaavaliacao extends javax.swing.JFrame {
                             .addComponent(jCheckBoxVisuoconstrucao))))
                 .addGap(59, 59, 59)
                 .addComponent(jButtonEnviarQueixas)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonFechar)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Queixas", jPanel1);
@@ -364,6 +378,10 @@ public class Telaavaliacao extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBoxVisuoconstrucaoActionPerformed
 
+    private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonFecharActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -402,6 +420,7 @@ public class Telaavaliacao extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEnviarQueixas;
+    private javax.swing.JButton jButtonFechar;
     private javax.swing.JCheckBox jCheckBoxAltPersonalidade;
     private javax.swing.JCheckBox jCheckBoxFuncExecutivas;
     private javax.swing.JCheckBox jCheckBoxLinguagem;

@@ -35,24 +35,29 @@ public class CitacaoDAO {
             try {if(connection !=null){connection.close();}
             }catch(SQLException e){e.printStackTrace();}
         }
-        String sql1="insert into tag (descricao) values (?)";
-        PreparedStatement stmt1=null;
-        Connection connection1=null;
-        try{
-            connection1=new Conexao().getConnection();
-            stmt1=connection1.prepareStatement(sql1);
-            stmt1.setString(1,c.getTags());
-            stmt1.execute();
-            
-        }catch(SQLException e){
-            e.printStackTrace();
-            throw new ExceptionDAO("Erro ao cadastrar tag:"+e);
-        }finally{
-            try {if(stmt1!=null){stmt1.close();}
-            }catch (SQLException e){e.printStackTrace();}
-            try {if(connection1 !=null){connection.close();}
-            }catch(SQLException e){e.printStackTrace();}
+        
+        ArrayList<String> tags=c.getTags();
+        for(String tag:tags){
+            String sql1="insert into tag (descricao) values (?)";
+            PreparedStatement stmt1=null;
+            Connection connection1=null;
+            try{
+                connection1=new Conexao().getConnection();
+                stmt1=connection1.prepareStatement(sql1);
+                stmt1.setString(1,tag);
+                stmt1.execute();
+
+            }catch(SQLException e){
+                e.printStackTrace();
+                throw new ExceptionDAO("Erro ao cadastrar tag:"+e);
+            }finally{
+                try {if(stmt1!=null){stmt1.close();}
+                }catch (SQLException e){e.printStackTrace();}
+                try {if(connection1 !=null){connection.close();}
+                }catch(SQLException e){e.printStackTrace();}
+            }
         }
+
     }
     
     public void alterarCitacao(Citacao c) throws ExceptionDAO{

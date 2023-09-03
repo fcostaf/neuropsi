@@ -18,14 +18,14 @@ public class CitacaoController {
     public CitacaoController() {
     }
     
-    public void cadastrarCitacao(String fonte,String descricao,String tags) throws ExceptionDAO{
+    public void cadastrarCitacao(String fonte,String descricao,ArrayList<String> tags) throws ExceptionDAO{
         Citacao c=new Citacao(fonte,descricao,tags);
         c.cadastrarCitacao(c);
     }
     
     public void alterarCitacao(String idcitacao,String fonte,String descricao) throws ExceptionDAO{
-        Citacao c=new Citacao(idcitacao,fonte,descricao);
-        c.alterarCitacao(c);
+        //Citacao c=new Citacao(idcitacao,fonte,descricao);
+        //c.alterarCitacao(c);
     }
     
     public void excluirCitacao(String idcitacao) throws ExceptionDAO{

@@ -16,7 +16,7 @@ public class Citacao {
     private String idcitacao;
     private String fonte;
     private String descricao;
-    private String tags;
+    private ArrayList<String> tags;
 
     public Citacao() {
     }
@@ -30,7 +30,7 @@ public class Citacao {
         this.descricao = descricao;
     }
 
-    public Citacao(String fonte, String descricao, String tags) {
+    public Citacao(String fonte, String descricao, ArrayList<String> tags) {
         this.fonte = fonte;
         this.descricao = descricao;
         this.tags = tags;
@@ -38,7 +38,7 @@ public class Citacao {
 
     
 
-    public Citacao(String idcitacao, String fonte, String descricao, String tags) {
+    public Citacao(String idcitacao, String fonte, String descricao, ArrayList<String> tags) {
         this.idcitacao = idcitacao;
         this.fonte = fonte;
         this.descricao = descricao;
@@ -70,11 +70,11 @@ public class Citacao {
         this.descricao = descricao;
     }
     
-    public String getTags() {
+    public ArrayList<String> getTags() {
         return tags;
     }
 
-    public void setTags(String tags) {
+    public void setTags(ArrayList<String> tags) {
         this.tags = tags;
     }
     

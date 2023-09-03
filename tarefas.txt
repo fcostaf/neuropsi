@@ -1,0 +1,3 @@
+- Evitar cadastrar tags iguais no db
+- Limpar tela após cadastro
+- Fazer ligação citacao_tag

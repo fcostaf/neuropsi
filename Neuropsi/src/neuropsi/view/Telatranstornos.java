@@ -467,11 +467,14 @@ public class Telatranstornos extends javax.swing.JFrame {
     private void jButtonCadastrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrar1ActionPerformed
         CitacaoController cc=new CitacaoController();
         String fonte=jTextFieldFonte.getText();
-        String tag=jTextFieldNovaTag.getText();
+        ArrayList<String> listaTags=new ArrayList();
+        for(String tag:jLabelTags.getText().split(",")){
+            listaTags.add(tag);
+        }
         //String filhos=String.valueOf(jComboBoxFilhos.getSelectedItem());
         String descricao=jTextAreaCitacao.getText();
         try {
-            cc.cadastrarCitacao(fonte,descricao,tag);
+            cc.cadastrarCitacao(fonte,descricao,listaTags);
             JOptionPane.showMessageDialog(this, "Cadastrado!");
         } catch (ExceptionDAO ex) {
             Logger.getLogger(Telatranstornos.class.getName()).log(Level.SEVERE, null, ex);

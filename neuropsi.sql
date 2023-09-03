@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 01/09/2023 às 16:55
+-- Tempo de geração: 03/09/2023 às 21:54
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -30,8 +30,32 @@ SET time_zone = "+00:00";
 CREATE TABLE `citacao` (
   `idcitacao` int(11) NOT NULL,
   `fonte` varchar(100) DEFAULT NULL,
-  `descricao` text DEFAULT NULL
+  `descricao` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `citacao`
+--
+
+INSERT INTO `citacao` (`idcitacao`, `fonte`, `descricao`) VALUES
+(1, 'dfg', ''),
+(2, 'asdfs', ''),
+(3, 'aasdf', ''),
+(4, 'qqq', 'dfh'),
+(5, 'zzz', 'sasasa'),
+(6, 'Bla', 'Blablabla'),
+(7, 'Eu', 'Teste para ver se cadastra tag repetida.'),
+(8, 'MDS', 'Teste para ver se conecta tags e citacao'),
+(9, 'Eumesmo', 'Teste para ver se conecta citacao e tags'),
+(10, 'Eumesmo', 'Teste conexao citacao tag'),
+(11, 'Eu', 'Teste select idtag'),
+(12, 'Eu', 'Teste select idtag'),
+(13, 'eu', 'Teste select idtag'),
+(14, 'eu', 'Teste select idtag'),
+(15, 'eu', 'idtags.add(rs4.getInt(\"idtag\"));}'),
+(16, 'eu', 'ResultSet rs4=null;'),
+(17, 'eu', 'Integer.toString(idtags.get(n))'),
+(18, 'eu', 'Integer.toString(idtags.get(n))');
 
 -- --------------------------------------------------------
 
@@ -44,6 +68,13 @@ CREATE TABLE `citacao_tag` (
   `citacao` int(11) DEFAULT NULL,
   `tag` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `citacao_tag`
+--
+
+INSERT INTO `citacao_tag` (`idcitacao_tag`, `citacao`, `tag`) VALUES
+(1, 18, 6);
 
 -- --------------------------------------------------------
 
@@ -109,6 +140,22 @@ CREATE TABLE `tag` (
   `idtag` int(11) NOT NULL,
   `descricao` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `tag`
+--
+
+INSERT INTO `tag` (`idtag`, `descricao`) VALUES
+(1, 'Teste'),
+(2, 'Teste1'),
+(3, 'Teste3'),
+(4, 'Teste4'),
+(5, 'Teste2'),
+(6, 'Nova'),
+(7, 'Outra'),
+(8, 'Outra nova'),
+(9, 'Teste'),
+(10, 'Teste1');
 
 -- --------------------------------------------------------
 
@@ -216,13 +263,13 @@ ALTER TABLE `transtorno`
 -- AUTO_INCREMENT de tabela `citacao`
 --
 ALTER TABLE `citacao`
-  MODIFY `idcitacao` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idcitacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de tabela `citacao_tag`
 --
 ALTER TABLE `citacao_tag`
-  MODIFY `idcitacao_tag` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idcitacao_tag` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `paciente`
@@ -246,7 +293,7 @@ ALTER TABLE `sintoma`
 -- AUTO_INCREMENT de tabela `tag`
 --
 ALTER TABLE `tag`
-  MODIFY `idtag` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idtag` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `teste`

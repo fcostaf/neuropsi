@@ -5,9 +5,12 @@
  */
 package neuropsi.view;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -68,12 +71,14 @@ public class Telatranstornos extends javax.swing.JFrame {
         jButtonBuscar1 = new javax.swing.JButton();
         jButtonAlterar1 = new javax.swing.JButton();
         jButtonExcluir1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jButtonFechar = new javax.swing.JButton();
+        jComboBoxTags = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jTextFieldNovaTag = new javax.swing.JTextField();
         jButtonAdicionar = new javax.swing.JButton();
         jLabelTags = new javax.swing.JLabel();
+        jButtonIncluir = new javax.swing.JButton();
+        jButtonRemover = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -254,10 +259,10 @@ public class Telatranstornos extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Fechar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonFechar.setText("Fechar");
+        jButtonFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonFecharActionPerformed(evt);
             }
         });
 
@@ -270,7 +275,19 @@ public class Telatranstornos extends javax.swing.JFrame {
             }
         });
 
-        jLabelTags.setText("TAGS");
+        jButtonIncluir.setText("Incluir");
+        jButtonIncluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonIncluirActionPerformed(evt);
+            }
+        });
+
+        jButtonRemover.setText("Remover");
+        jButtonRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRemoverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -284,7 +301,7 @@ public class Telatranstornos extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2)
+                            .addComponent(jButtonFechar)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
@@ -310,13 +327,16 @@ public class Telatranstornos extends javax.swing.JFrame {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel6)
                                         .addGap(31, 31, 31)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jComboBoxTags, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel8)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jTextFieldNovaTag)))
                                 .addGap(18, 18, 18)
-                                .addComponent(jButtonAdicionar))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButtonAdicionar)
+                                    .addComponent(jButtonIncluir)
+                                    .addComponent(jButtonRemover)))
                             .addComponent(jLabelTags))))
                 .addContainerGap(133, Short.MAX_VALUE))
         );
@@ -338,8 +358,11 @@ public class Telatranstornos extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
+                            .addComponent(jComboBoxTags, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)
+                            .addComponent(jButtonIncluir))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonRemover)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelTags)))
                 .addGap(26, 26, 26)
@@ -352,7 +375,7 @@ public class Telatranstornos extends javax.swing.JFrame {
                     .addComponent(jButtonAlterar1)
                     .addComponent(jButtonExcluir1))
                 .addGap(52, 52, 52)
-                .addComponent(jButton2)
+                .addComponent(jButtonFechar)
                 .addContainerGap(121, Short.MAX_VALUE))
         );
 
@@ -445,13 +468,13 @@ public class Telatranstornos extends javax.swing.JFrame {
         CitacaoController cc=new CitacaoController();
         String fonte=jTextFieldFonte.getText();
         String tag=jTextFieldNovaTag.getText();
-        String filhos=String.valueOf(jComboBoxFilhos.getSelectedItem());
-        String descricao=jTextAreaDescricao.getText();
+        //String filhos=String.valueOf(jComboBoxFilhos.getSelectedItem());
+        String descricao=jTextAreaCitacao.getText();
         try {
-            p.cadastrarPaciente(nome, sexo, lateralidade, dn, ln, escolaridade, curso, profissao, estado_civil, filhos,comentario);
+            cc.cadastrarCitacao(fonte,descricao,tag);
             JOptionPane.showMessageDialog(this, "Cadastrado!");
         } catch (ExceptionDAO ex) {
-            Logger.getLogger(Telacadastropacientes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Telatranstornos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonCadastrar1ActionPerformed
 
@@ -471,14 +494,60 @@ public class Telatranstornos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonExcluir1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
+    private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonFecharActionPerformed
+    Collection <String> tags=new ArrayList();
     private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
-        String tag=jTextFieldNovaTag.getText();
-        
+        if(tags.contains(jTextFieldNovaTag.getText())){
+            JOptionPane.showMessageDialog(rootPane, "Tag já cadastrada");
+        }else{
+            tags.add(jTextFieldNovaTag.getText());
+            jComboBoxTags.addItem(jTextFieldNovaTag.getText());
+            jTextFieldNovaTag.setText("");
+            String listaTags="";
+            for(String tag:tags){
+                listaTags+=tag+",";
+            }
+            if(tags.size()>=1){
+                jLabelTags.setText(listaTags.substring(0, listaTags.length()-1));
+            }else{
+                jLabelTags.setText("");
+            }
+        }
     }//GEN-LAST:event_jButtonAdicionarActionPerformed
+    
+    private void jButtonIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIncluirActionPerformed
+        if(tags.contains((String)jComboBoxTags.getSelectedItem())){
+            JOptionPane.showMessageDialog(rootPane, "Tag já cadastrada");
+        }else{
+            tags.add((String)jComboBoxTags.getSelectedItem());
+            String listaTags="";
+            for(String tag:tags){
+                listaTags+=tag+",";
+            }
+            if(tags.size()>=1){
+                jLabelTags.setText(listaTags.substring(0, listaTags.length()-1));
+            }else{
+                jLabelTags.setText("");
+            }
+        }
+    }//GEN-LAST:event_jButtonIncluirActionPerformed
+
+    private void jButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverActionPerformed
+        if(tags.contains((String)jComboBoxTags.getSelectedItem())){
+            tags.remove((String)jComboBoxTags.getSelectedItem());
+            String listaTags="";
+            for(String tag:tags){
+                listaTags+=tag+",";
+            }
+            if(tags.size()>=1){
+                jLabelTags.setText(listaTags.substring(0, listaTags.length()-1));
+            }else{
+                jLabelTags.setText("");
+            }
+        }
+    }//GEN-LAST:event_jButtonRemoverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -520,7 +589,6 @@ public class Telatranstornos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonAdicionar;
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonAlterar1;
@@ -530,9 +598,12 @@ public class Telatranstornos extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCadastrar1;
     private javax.swing.JButton jButtonExcluir;
     private javax.swing.JButton jButtonExcluir1;
+    private javax.swing.JButton jButtonFechar;
+    private javax.swing.JButton jButtonIncluir;
     private javax.swing.JButton jButtonLimpar;
     private javax.swing.JButton jButtonLimpar1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton jButtonRemover;
+    private javax.swing.JComboBox<String> jComboBoxTags;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -656,6 +727,166 @@ public class Telatranstornos extends javax.swing.JFrame {
 
     public void setjTextFieldNome(JTextField jTextFieldNome) {
         this.jTextFieldNome = jTextFieldNome;
+    }
+
+    public JButton getjButton1() {
+        return jButton1;
+    }
+
+    public void setjButton1(JButton jButton1) {
+        this.jButton1 = jButton1;
+    }
+
+    public JButton getjButton2() {
+        return jButtonFechar;
+    }
+
+    public void setjButton2(JButton jButton2) {
+        this.jButtonFechar = jButton2;
+    }
+
+    public JButton getjButtonAdicionar() {
+        return jButtonAdicionar;
+    }
+
+    public void setjButtonAdicionar(JButton jButtonAdicionar) {
+        this.jButtonAdicionar = jButtonAdicionar;
+    }
+
+    public JButton getjButtonAlterar1() {
+        return jButtonAlterar1;
+    }
+
+    public void setjButtonAlterar1(JButton jButtonAlterar1) {
+        this.jButtonAlterar1 = jButtonAlterar1;
+    }
+
+    public JButton getjButtonBuscar1() {
+        return jButtonBuscar1;
+    }
+
+    public void setjButtonBuscar1(JButton jButtonBuscar1) {
+        this.jButtonBuscar1 = jButtonBuscar1;
+    }
+
+    public JButton getjButtonCadastrar1() {
+        return jButtonCadastrar1;
+    }
+
+    public void setjButtonCadastrar1(JButton jButtonCadastrar1) {
+        this.jButtonCadastrar1 = jButtonCadastrar1;
+    }
+
+    public JButton getjButtonExcluir1() {
+        return jButtonExcluir1;
+    }
+
+    public void setjButtonExcluir1(JButton jButtonExcluir1) {
+        this.jButtonExcluir1 = jButtonExcluir1;
+    }
+
+    public JButton getjButtonLimpar1() {
+        return jButtonLimpar1;
+    }
+
+    public void setjButtonLimpar1(JButton jButtonLimpar1) {
+        this.jButtonLimpar1 = jButtonLimpar1;
+    }
+
+    public JComboBox<String> getjComboBox1() {
+        return jComboBoxTags;
+    }
+
+    public void setjComboBox1(JComboBox<String> jComboBox1) {
+        this.jComboBoxTags = jComboBox1;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public void setjLabel4(JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    public JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    public void setjLabel5(JLabel jLabel5) {
+        this.jLabel5 = jLabel5;
+    }
+
+    public JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    public void setjLabel6(JLabel jLabel6) {
+        this.jLabel6 = jLabel6;
+    }
+
+    public JLabel getjLabel7() {
+        return jLabel7;
+    }
+
+    public void setjLabel7(JLabel jLabel7) {
+        this.jLabel7 = jLabel7;
+    }
+
+    public JLabel getjLabel8() {
+        return jLabel8;
+    }
+
+    public void setjLabel8(JLabel jLabel8) {
+        this.jLabel8 = jLabel8;
+    }
+
+    public JLabel getjLabelTags() {
+        return jLabelTags;
+    }
+
+    public void setjLabelTags(JLabel jLabelTags) {
+        this.jLabelTags = jLabelTags;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
+
+    public JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    public void setjScrollPane2(JScrollPane jScrollPane2) {
+        this.jScrollPane2 = jScrollPane2;
+    }
+
+    public JTextArea getjTextAreaCitacao() {
+        return jTextAreaCitacao;
+    }
+
+    public void setjTextAreaCitacao(JTextArea jTextAreaCitacao) {
+        this.jTextAreaCitacao = jTextAreaCitacao;
+    }
+
+    public JTextField getjTextFieldFonte() {
+        return jTextFieldFonte;
+    }
+
+    public void setjTextFieldFonte(JTextField jTextFieldFonte) {
+        this.jTextFieldFonte = jTextFieldFonte;
+    }
+
+    public JTextField getjTextFieldNovaTag() {
+        return jTextFieldNovaTag;
+    }
+
+    public void setjTextFieldNovaTag(JTextField jTextFieldNovaTag) {
+        this.jTextFieldNovaTag = jTextFieldNovaTag;
     }
     
     public void selecionaDadosSintomas(){

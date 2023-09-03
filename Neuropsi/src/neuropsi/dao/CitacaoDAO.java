@@ -35,6 +35,24 @@ public class CitacaoDAO {
             try {if(connection !=null){connection.close();}
             }catch(SQLException e){e.printStackTrace();}
         }
+        String sql1="insert into tag (descricao) values (?)";
+        PreparedStatement stmt1=null;
+        Connection connection1=null;
+        try{
+            connection1=new Conexao().getConnection();
+            stmt1=connection1.prepareStatement(sql1);
+            stmt1.setString(1,c.getTags());
+            stmt1.execute();
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+            throw new ExceptionDAO("Erro ao cadastrar tag:"+e);
+        }finally{
+            try {if(stmt1!=null){stmt1.close();}
+            }catch (SQLException e){e.printStackTrace();}
+            try {if(connection1 !=null){connection.close();}
+            }catch(SQLException e){e.printStackTrace();}
+        }
     }
     
     public void alterarCitacao(Citacao c) throws ExceptionDAO{
@@ -77,27 +95,23 @@ public class CitacaoDAO {
             }catch(SQLException e){e.printStackTrace();}
         }
     }
-    /*
-    public ArrayList<Citacao> listarCitacao(String nome) throws ExceptionDAO{
+    
+    public ArrayList<String> listarTags() throws ExceptionDAO{
         ResultSet rs=null;
         Connection conn=null;
         PreparedStatement stmt=null;
         Citacao c=null;
-        ArrayList<Citacao> listaDeCitacao=null;
+        ArrayList<String> listaDeTags=null;
         
         try{
-            String sql="select * from citacao where nome like '%"+nome+"%' order by nome";
+            String sql="select descricao from tag order by descricao";
             conn=new Conexao().getConnection();
             stmt=conn.prepareStatement(sql);
             rs=stmt.executeQuery();
             if(rs!=null){
-                listaDeSintomas=new ArrayList<>();
+                listaDeTags=new ArrayList<>();
                 while(rs.next()){
-                    s=new Sintoma();
-                    s.setIdsintoma(rs.getString("idsintoma"));
-                    s.setNome(rs.getString("nome"));
-                    s.setDescricao(rs.getString("descricao"));
-                    listaDeSintomas.add(s);}}
+                    listaDeTags.add(rs.getString("descricao"));}}
                 }catch(SQLException e) {e.printStackTrace();
                         throw new ExceptionDAO("Erro ao listar sintomas: "+e);
                 }finally{try{if(rs!=null){rs.close();}
@@ -107,5 +121,6 @@ public class CitacaoDAO {
                         }try{if(conn!=null){conn.close();}
                         }catch(Exception e){
                             e.printStackTrace();}
-            }return listaDeSintomas;*/
+            }return listaDeTags;
+    }
 }

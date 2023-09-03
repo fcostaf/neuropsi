@@ -1,11 +1,17 @@
 
 package neuropsi.view;
 
+import com.sun.tools.javac.tree.JCTree;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import neuropsi.Neuropsi;
 import static neuropsi.Neuropsi.tcad;
 import static neuropsi.Neuropsi.tava;
 import static neuropsi.Neuropsi.ttra;
+import neuropsi.controller.CitacaoController;
+import neuropsi.dao.ExceptionDAO;
 
 /**
  *
@@ -93,6 +99,17 @@ public class Telainicial extends javax.swing.JFrame {
 
     private void jButtonTranstornosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTranstornosActionPerformed
         ttra.setVisible(true);
+        CitacaoController cc=new CitacaoController();
+        ArrayList<String> tags = null;
+        try {
+            tags = cc.listarTags();
+        } catch (ExceptionDAO ex) {
+            Logger.getLogger(Telainicial.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for(String tag:tags){
+            ttra.getjComboBox1().addItem(tag);
+        }
+        
     }//GEN-LAST:event_jButtonTranstornosActionPerformed
 
     /**

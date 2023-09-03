@@ -18,8 +18,8 @@ public class CitacaoController {
     public CitacaoController() {
     }
     
-    public void cadastrarCitacao(String fonte,String descricao) throws ExceptionDAO{
-        Citacao c=new Citacao(fonte,descricao);
+    public void cadastrarCitacao(String fonte,String descricao,String tags) throws ExceptionDAO{
+        Citacao c=new Citacao(fonte,descricao,tags);
         c.cadastrarCitacao(c);
     }
     
@@ -32,9 +32,9 @@ public class CitacaoController {
         Citacao c=new Citacao(idcitacao);
         c.excluirCitacao(c);
     }
-    /*
-    public ArrayList<Citacao> listarCitacao(String nome) throws ExceptionDAO{
+    
+    public ArrayList<String> listarTags() throws ExceptionDAO{
         Citacao c=new Citacao();
-        return c.listarCitacao(nome);
-    }*/
+        return c.listarTags();
+    }
 }

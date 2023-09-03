@@ -16,6 +16,7 @@ public class Citacao {
     private String idcitacao;
     private String fonte;
     private String descricao;
+    private String tags;
 
     public Citacao() {
     }
@@ -29,11 +30,21 @@ public class Citacao {
         this.descricao = descricao;
     }
 
-    public Citacao(String idcitacao, String fonte, String descricao) {
+    public Citacao(String fonte, String descricao, String tags) {
+        this.fonte = fonte;
+        this.descricao = descricao;
+        this.tags = tags;
+    }
+
+    
+
+    public Citacao(String idcitacao, String fonte, String descricao, String tags) {
         this.idcitacao = idcitacao;
         this.fonte = fonte;
         this.descricao = descricao;
+        this.tags = tags;
     }
+    
 
     public String getIdcitacao() {
         return idcitacao;
@@ -59,10 +70,18 @@ public class Citacao {
         this.descricao = descricao;
     }
     
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+    
     public void cadastrarCitacao(Citacao c) throws ExceptionDAO{
         new CitacaoDAO().cadastrarCitacao(c);
     }
-    
+
     public void alterarCitacao(Citacao c) throws ExceptionDAO{
         new CitacaoDAO().alterarCitacao(c);
     }
@@ -71,8 +90,8 @@ public class Citacao {
         int idcitacao=Integer.parseInt(c.idcitacao);
         new CitacaoDAO().excluirCitacao(idcitacao);
     }
-    /*
-    public ArrayList<Citacao> listarCitacao(String nome) throws ExceptionDAO{
-        return new CitacaoDAO().listarSintomas(nome);
-    }*/
+    
+    public ArrayList<String> listarTags() throws ExceptionDAO{
+        return new CitacaoDAO().listarTags();
+    }
 }

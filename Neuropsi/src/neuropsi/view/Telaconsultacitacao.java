@@ -7,7 +7,12 @@ package neuropsi.view;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import neuropsi.controller.CitacaoController;
 import neuropsi.model.Citacao;
@@ -132,12 +137,12 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
-        //String nome=jTextFieldBuscar.getText();
+        /*//String nome=jTextFieldBuscar.getText();
         try{
             DefaultTableModel tableModel=(DefaultTableModel)jTableConsultaCitacao.getModel();
             
             CitacaoController cc=new CitacaoController();
-            ArrayList<Citacao> listaCitacao=cc.listarCitacao();
+            ArrayList<Citacao> listaCitacao=cc.filtrarCitacao();
             
             Iterator<Citacao> iterator=listaCitacao.iterator();
             while(iterator.hasNext()){
@@ -146,7 +151,7 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,"Erro: "+e);
-        }
+        }*/
     }//GEN-LAST:event_jButtonFiltrarActionPerformed
 
     private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed
@@ -198,4 +203,69 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableConsultaCitacao;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getjButtonFechar() {
+        return jButtonFechar;
+    }
+
+    public void setjButtonFechar(JButton jButtonFechar) {
+        this.jButtonFechar = jButtonFechar;
+    }
+
+    public JButton getjButtonFiltrar() {
+        return jButtonFiltrar;
+    }
+
+    public void setjButtonFiltrar(JButton jButtonFiltrar) {
+        this.jButtonFiltrar = jButtonFiltrar;
+    }
+
+    public JComboBox<String> getjComboBoxTagConsulta() {
+        return jComboBoxTagConsulta;
+    }
+
+    public void setjComboBoxTagConsulta(JComboBox<String> jComboBoxTagConsulta) {
+        this.jComboBoxTagConsulta = jComboBoxTagConsulta;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabelTagsConsulta() {
+        return jLabelTagsConsulta;
+    }
+
+    public void setjLabelTagsConsulta(JLabel jLabelTagsConsulta) {
+        this.jLabelTagsConsulta = jLabelTagsConsulta;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JTable getjTableConsultaCitacao() {
+        return jTableConsultaCitacao;
+    }
+
+    public void setjTableConsultaCitacao(JTable jTableConsultaCitacao) {
+        this.jTableConsultaCitacao = jTableConsultaCitacao;
+    }
+    
 }

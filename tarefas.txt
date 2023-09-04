@@ -2,4 +2,5 @@ v- Evitar cadastrar tags iguais no db
 - Limpar tela após cadastro
 v- Fazer ligação citacao_tag
 	v- conferir se liga tag novas
+- Continuar filtrar citacao na tela consultacitacao
 - Excluir citacao

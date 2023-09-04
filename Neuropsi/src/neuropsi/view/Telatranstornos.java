@@ -8,6 +8,7 @@ package neuropsi.view;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -19,9 +20,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 import neuropsi.controller.CitacaoController;
 import neuropsi.controller.SintomaController;
 import neuropsi.dao.ExceptionDAO;
+import neuropsi.model.Citacao;
 
 /**
  *
@@ -491,6 +494,31 @@ public class Telatranstornos extends javax.swing.JFrame {
     private void jButtonBuscarCitacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarCitacaoActionPerformed
         Telaconsultacitacao t=new Telaconsultacitacao();
         t.setVisible(true);
+        CitacaoController cc=new CitacaoController();
+        ArrayList<String> tags = null;
+        try {
+            tags = cc.listarTags();
+        } catch (ExceptionDAO ex) {
+            Logger.getLogger(Telatranstornos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for(String tag:tags){
+            t.getjComboBoxTagConsulta().addItem(tag);
+        }
+        
+        try{
+            DefaultTableModel tableModel=(DefaultTableModel)t.getjTableConsultaCitacao().getModel();
+            
+            //CitacaoController cc=new CitacaoController();
+            ArrayList<Citacao> listaCitacao=cc.listarCitacao();
+            
+            Iterator<Citacao> iterator=listaCitacao.iterator();
+            while(iterator.hasNext()){
+                Citacao c=iterator.next();
+                tableModel.addRow(new Object[]{c.getIdcitacao(),c.getFonte(),c.getDescricao()});
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Erro: "+e);
+        }
     }//GEN-LAST:event_jButtonBuscarCitacaoActionPerformed
 
     private void jButtonAlterar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterar1ActionPerformed

@@ -269,7 +269,7 @@
                                           <Group type="102" attributes="0">
                                               <Component id="jButtonCadastrar1" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="jButtonBuscar1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jButtonBuscarCitacao" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="jScrollPane2" max="32767" attributes="0"/>
                                           <Component id="jTextFieldFonte" max="32767" attributes="0"/>
@@ -338,7 +338,7 @@
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButtonCadastrar1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonBuscar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonBuscarCitacao" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -407,12 +407,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLimpar1ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonBuscar1">
+            <Component class="javax.swing.JButton" name="jButtonBuscarCitacao">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBuscar1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBuscarCitacaoActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonAlterar1">

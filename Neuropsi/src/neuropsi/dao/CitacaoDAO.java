@@ -232,4 +232,36 @@ public class CitacaoDAO {
                             e.printStackTrace();}
             }return listaDeTags;
     }
+    
+    public ArrayList<Citacao> listarCitacao() throws ExceptionDAO{
+        ResultSet rs=null;
+        Connection conn=null;
+        PreparedStatement stmt=null;
+        Citacao c=null;
+        ArrayList<Citacao> listaDeCitacao=null;
+        
+        try{
+            String sql="select * from citacao";
+            conn=new Conexao().getConnection();
+            stmt=conn.prepareStatement(sql);
+            rs=stmt.executeQuery();
+            if(rs!=null){
+                listaDeCitacao=new ArrayList<>();
+                while(rs.next()){
+                    c=new Citacao();
+                    c.setIdcitacao(rs.getString("idcitacao"));
+                    c.setFonte(rs.getString("fonte"));
+                    c.setDescricao(rs.getString("descricao"));
+                    listaDeCitacao.add(c);}}
+                }catch(SQLException e) {e.printStackTrace();
+                        throw new ExceptionDAO("Erro ao listar citações: "+e);
+                }finally{try{if(rs!=null){rs.close();}
+                        }catch(SQLException e){e.printStackTrace();}
+                        try{if(stmt!=null){stmt.close();}
+                        }catch(SQLException e){e.printStackTrace();
+                        }try{if(conn!=null){conn.close();}
+                        }catch(Exception e){
+                            e.printStackTrace();}
+            }return listaDeCitacao;
+    }
 }

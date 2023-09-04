@@ -5,6 +5,7 @@
  */
 package neuropsi.view;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.logging.Level;
@@ -68,7 +69,7 @@ public class Telatranstornos extends javax.swing.JFrame {
         jTextAreaCitacao = new javax.swing.JTextArea();
         jButtonCadastrar1 = new javax.swing.JButton();
         jButtonLimpar1 = new javax.swing.JButton();
-        jButtonBuscar1 = new javax.swing.JButton();
+        jButtonBuscarCitacao = new javax.swing.JButton();
         jButtonAlterar1 = new javax.swing.JButton();
         jButtonExcluir1 = new javax.swing.JButton();
         jButtonFechar = new javax.swing.JButton();
@@ -237,10 +238,10 @@ public class Telatranstornos extends javax.swing.JFrame {
             }
         });
 
-        jButtonBuscar1.setText("Buscar");
-        jButtonBuscar1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBuscarCitacao.setText("Buscar");
+        jButtonBuscarCitacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBuscar1ActionPerformed(evt);
+                jButtonBuscarCitacaoActionPerformed(evt);
             }
         });
 
@@ -317,7 +318,7 @@ public class Telatranstornos extends javax.swing.JFrame {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jButtonCadastrar1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButtonBuscar1))
+                                        .addComponent(jButtonBuscarCitacao))
                                     .addComponent(jScrollPane2)
                                     .addComponent(jTextFieldFonte))))
                         .addGap(43, 43, 43)
@@ -368,7 +369,7 @@ public class Telatranstornos extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCadastrar1)
-                    .addComponent(jButtonBuscar1))
+                    .addComponent(jButtonBuscarCitacao))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonLimpar1)
@@ -478,6 +479,8 @@ public class Telatranstornos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Cadastrado!");
         } catch (ExceptionDAO ex) {
             Logger.getLogger(Telatranstornos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Telatranstornos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonCadastrar1ActionPerformed
 
@@ -485,9 +488,10 @@ public class Telatranstornos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLimpar1ActionPerformed
 
-    private void jButtonBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonBuscar1ActionPerformed
+    private void jButtonBuscarCitacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarCitacaoActionPerformed
+        Telaconsultacitacao t=new Telaconsultacitacao();
+        t.setVisible(true);
+    }//GEN-LAST:event_jButtonBuscarCitacaoActionPerformed
 
     private void jButtonAlterar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterar1ActionPerformed
         // TODO add your handling code here:
@@ -596,7 +600,7 @@ public class Telatranstornos extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonAlterar1;
     private javax.swing.JButton jButtonBuscar;
-    private javax.swing.JButton jButtonBuscar1;
+    private javax.swing.JButton jButtonBuscarCitacao;
     private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JButton jButtonCadastrar1;
     private javax.swing.JButton jButtonExcluir;
@@ -765,11 +769,11 @@ public class Telatranstornos extends javax.swing.JFrame {
     }
 
     public JButton getjButtonBuscar1() {
-        return jButtonBuscar1;
+        return jButtonBuscarCitacao;
     }
 
     public void setjButtonBuscar1(JButton jButtonBuscar1) {
-        this.jButtonBuscar1 = jButtonBuscar1;
+        this.jButtonBuscarCitacao = jButtonBuscar1;
     }
 
     public JButton getjButtonCadastrar1() {

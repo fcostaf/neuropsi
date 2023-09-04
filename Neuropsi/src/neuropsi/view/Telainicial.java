@@ -1,7 +1,6 @@
 
 package neuropsi.view;
 
-import com.sun.tools.javac.tree.JCTree;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;

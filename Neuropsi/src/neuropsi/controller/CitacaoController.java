@@ -5,6 +5,7 @@
  */
 package neuropsi.controller;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import neuropsi.dao.ExceptionDAO;
 import neuropsi.model.Citacao;
@@ -18,7 +19,7 @@ public class CitacaoController {
     public CitacaoController() {
     }
     
-    public void cadastrarCitacao(String fonte,String descricao,ArrayList<String> tags) throws ExceptionDAO{
+    public void cadastrarCitacao(String fonte,String descricao,ArrayList<String> tags) throws ExceptionDAO, SQLException{
         Citacao c=new Citacao(fonte,descricao,tags);
         c.cadastrarCitacao(c);
     }
@@ -36,5 +37,10 @@ public class CitacaoController {
     public ArrayList<String> listarTags() throws ExceptionDAO{
         Citacao c=new Citacao();
         return c.listarTags();
+    }
+
+    public ArrayList<Citacao> listarCitacao() throws ExceptionDAO{
+        Citacao c=new Citacao();
+        return c.listarCitacao();
     }
 }

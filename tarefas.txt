@@ -1,4 +1,5 @@
 v- Evitar cadastrar tags iguais no db
 - Limpar tela após cadastro
-- Fazer ligação citacao_tag
-	- conferir se liga tag novas
+v- Fazer ligação citacao_tag
+	v- conferir se liga tag novas
+- Excluir citacao

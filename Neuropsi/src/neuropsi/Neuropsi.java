@@ -15,6 +15,10 @@ public class Neuropsi {
         tcad.getjButtonExcluir().setEnabled(false);
         ttra.getjButtonAlterar().setEnabled(false);
         ttra.getjButtonExcluir().setEnabled(false);
+        ttra.getjButtonAlterar1().setEnabled(false);
+        ttra.getjButtonExcluir1().setEnabled(false);
+        
+        
         
     }
     public static Telacadastropacientes tcad=new Telacadastropacientes();
@@ -38,6 +42,11 @@ public class Neuropsi {
     public static String idsintoma="";
     public static String descricao="";
     
+    public static String table1="";
+    public static String table2="";
+    public static String table3="";
+    public static String table4="";
+    
     public static void selecionaDados(String idpacient,String nom,String sex,String lateralidad,
             String d,String l,String escolaridad,String curs,String profissa,String estadocivil,
             String filho,String comentari){
@@ -59,5 +68,11 @@ public class Neuropsi {
         idsintoma=idsintom;
         nome=nom;
         descricao=descrica;
+    }
+    
+    public static void selecionaDadosGeral(String campo1,String campo2,String campo3){
+        table1=campo1;
+        table2=campo2;
+        table3=campo3;
     }
 }

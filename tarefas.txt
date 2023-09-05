@@ -1,6 +1,17 @@
 v- Evitar cadastrar tags iguais no db
-- Limpar tela após cadastro
 v- Fazer ligação citacao_tag
 	v- conferir se liga tag novas
+
+- Limpar tela após cadastro
 - Continuar filtrar citacao na tela consultacitacao
 - Excluir citacao
+- Limpar citacao
+
+MOUSECLICKED CONSULTA CITACAO
+- não dá pra remover tags
+- talvez esteja cortando a última letra da última tag
+
+TABELAS
+- trocar em neuropsi os vários selecionaDados por tipos segundo o número de colunas e associar às variáveis String tableN
+
+

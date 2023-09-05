@@ -99,4 +99,8 @@ public class Citacao {
     public ArrayList<Citacao> listarCitacao() throws ExceptionDAO{
         return new CitacaoDAO().listarCitacao();
     }
+
+    public ArrayList<String> coletarTags(String idcitacao) throws ExceptionDAO {
+        return new CitacaoDAO().coletarTags(idcitacao);
+    }
 }

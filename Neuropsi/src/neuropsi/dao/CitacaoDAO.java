@@ -173,6 +173,7 @@ public class CitacaoDAO {
             stmt=connection.prepareStatement(sql);
             stmt.setString(1, c.getFonte());
             stmt.setString(2,c.getDescricao());
+            stmt.setString(3,c.getIdcitacao());
             stmt.execute();
         }catch(SQLException e){
             e.printStackTrace();
@@ -263,5 +264,62 @@ public class CitacaoDAO {
                         }catch(Exception e){
                             e.printStackTrace();}
             }return listaDeCitacao;
+    }
+
+    public ArrayList<Integer> coletarIdTags(String idcitacao) throws ExceptionDAO {
+        ResultSet rs=null;
+        Connection conn=null;
+        PreparedStatement stmt=null;
+        ArrayList<Integer> listaDeIdTags=null;
+        try{
+            String sql="select tag from citacao_tag where citacao=?";
+            conn=new Conexao().getConnection();
+            stmt=conn.prepareStatement(sql);
+            stmt.setInt(1, Integer.parseInt(idcitacao));
+            rs=stmt.executeQuery();
+            if(rs!=null){
+                listaDeIdTags=new ArrayList<>();
+                while(rs.next()){
+                    listaDeIdTags.add(rs.getInt("tag"));}}
+                }catch(SQLException e) {e.printStackTrace();
+                        throw new ExceptionDAO("Erro ao coletar idtags: "+e);
+                }finally{try{if(rs!=null){rs.close();}
+                        }catch(SQLException e){e.printStackTrace();}
+                        try{if(stmt!=null){stmt.close();}
+                        }catch(SQLException e){e.printStackTrace();
+                        }try{if(conn!=null){conn.close();}
+                        }catch(Exception e){
+                            e.printStackTrace();}}
+            return listaDeIdTags;
+    }
+
+    public ArrayList<String> coletarTags(String idcitacao) throws ExceptionDAO {
+        ResultSet rs=null;
+        Connection conn=null;
+        PreparedStatement stmt=null;
+        ArrayList<Integer> listaDeIdTags=coletarIdTags(idcitacao);
+        ArrayList<String> listaDeTags=null;
+        listaDeTags=new ArrayList<>();
+        for(int idtag:listaDeIdTags){
+            try{
+                String sql="select descricao from tag where idtag=?";
+                conn=new Conexao().getConnection();
+                stmt=conn.prepareStatement(sql);
+                stmt.setInt(1, idtag);
+                rs=stmt.executeQuery();
+                if(rs!=null){
+                    
+                    while(rs.next()){
+                        listaDeTags.add(rs.getString("descricao"));}}
+                    }catch(SQLException e) {e.printStackTrace();
+                            throw new ExceptionDAO("Erro ao coletar tags: "+e);
+                    }finally{try{if(rs!=null){rs.close();}
+                            }catch(SQLException e){e.printStackTrace();}
+                            try{if(stmt!=null){stmt.close();}
+                            }catch(SQLException e){e.printStackTrace();
+                            }try{if(conn!=null){conn.close();}
+                            }catch(Exception e){
+                                e.printStackTrace();}}
+            }return listaDeTags;
     }
 }

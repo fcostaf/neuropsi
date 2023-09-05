@@ -7,14 +7,19 @@ package neuropsi.view;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import static neuropsi.Neuropsi.ttra;
 import neuropsi.controller.CitacaoController;
+import neuropsi.dao.ExceptionDAO;
 import neuropsi.model.Citacao;
 
 /**
@@ -70,6 +75,11 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTableConsultaCitacao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableConsultaCitacaoMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTableConsultaCitacao);
@@ -157,6 +167,26 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
     private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_jButtonFecharActionPerformed
+
+    private void jTableConsultaCitacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableConsultaCitacaoMouseClicked
+        if(evt.getClickCount()==2){
+            String campo1=(String)jTableConsultaCitacao.getModel().getValueAt(jTableConsultaCitacao.getSelectedRow(),0);
+            String campo2=(String)jTableConsultaCitacao.getModel().getValueAt(jTableConsultaCitacao.getSelectedRow(),1);
+            String campo3=(String)jTableConsultaCitacao.getModel().getValueAt(jTableConsultaCitacao.getSelectedRow(),2);
+                        
+            neuropsi.Neuropsi.selecionaDadosGeral(campo1,campo2,campo3);
+            this.setVisible(false);
+            ttra.setVisible(true);
+            try {
+                ttra.selecionaDadosCitacao();
+            } catch (ExceptionDAO ex) {
+                Logger.getLogger(Telaconsultacitacao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ttra.getjButtonCadastrar1().setEnabled(false);
+            ttra.getjButtonAlterar1().setEnabled(true);
+            ttra.getjButtonExcluir1().setEnabled(true);
+        }
+    }//GEN-LAST:event_jTableConsultaCitacaoMouseClicked
 
     /**
      * @param args the command line arguments

@@ -24,9 +24,14 @@ public class CitacaoController {
         c.cadastrarCitacao(c);
     }
     
-    public void alterarCitacao(String idcitacao,String fonte,String descricao) throws ExceptionDAO{
-        //Citacao c=new Citacao(idcitacao,fonte,descricao);
-        //c.alterarCitacao(c);
+    public void alterarCitacao(String idcitacao,String fonte,String descricao,ArrayList<String> tags) throws ExceptionDAO{
+        Citacao c=new Citacao(idcitacao,fonte,descricao,tags);
+        c.alterarCitacao(c);
+    }
+    
+    public ArrayList<String> coletarTags(String idcitacao) throws ExceptionDAO{
+        Citacao c=new Citacao(idcitacao);
+        return c.coletarTags(idcitacao);
     }
     
     public void excluirCitacao(String idcitacao) throws ExceptionDAO{

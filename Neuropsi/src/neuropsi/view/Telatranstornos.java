@@ -522,7 +522,24 @@ public class Telatranstornos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBuscarCitacaoActionPerformed
 
     private void jButtonAlterar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterar1ActionPerformed
-        // TODO add your handling code here:
+        CitacaoController cc=new CitacaoController();
+        ArrayList<String> listaTags=new ArrayList();
+        for(String tag:jLabelTags.getText().split(",")){
+            listaTags.add(tag);
+        }
+        int certeza=JOptionPane.showConfirmDialog(this, "Tem certeza de que deseja alterar?","Confirmação",JOptionPane.YES_NO_OPTION);
+        if(certeza==0){
+            String campo1=neuropsi.Neuropsi.table1;
+            String campo2=jTextFieldFonte.getText();
+            String campo3=jTextAreaCitacao.getText();
+            ArrayList<String> campo4=listaTags;
+            try {
+                cc.alterarCitacao(campo1,campo2,campo3,campo4);
+                JOptionPane.showMessageDialog(this, "Alterado!");
+            } catch (ExceptionDAO ex) {
+                Logger.getLogger(Telatranstornos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jButtonAlterar1ActionPerformed
 
     private void jButtonExcluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluir1ActionPerformed
@@ -927,6 +944,23 @@ public class Telatranstornos extends javax.swing.JFrame {
     public void selecionaDadosSintomas(){
         getjTextFieldNome().setText(neuropsi.Neuropsi.nome);
         getjTextAreaDescricao().setText(neuropsi.Neuropsi.descricao);
+    }
+    
+    public void selecionaDadosCitacao() throws ExceptionDAO{
+        getjTextFieldFonte().setText(neuropsi.Neuropsi.table2);
+        getjTextAreaCitacao().setText(neuropsi.Neuropsi.table3);
+        
+        CitacaoController cc=new CitacaoController();
+        ArrayList<String> Tags=cc.coletarTags(neuropsi.Neuropsi.table1);
+        String listaTags="";
+        for(String tag:Tags){
+                listaTags+=tag+",";
+            }
+            if(Tags.size()>=1){
+                jLabelTags.setText(listaTags.substring(0, listaTags.length()-1));
+            }else{
+                jLabelTags.setText("");
+            }
     }
 
 

@@ -48,4 +48,9 @@ public class CitacaoController {
         Citacao c=new Citacao();
         return c.listarCitacao();
     }
+
+    public void excluirTag(String tag) throws ExceptionDAO {
+        Citacao c=new Citacao();
+        c.excluirTag(tag);
+    }
 }

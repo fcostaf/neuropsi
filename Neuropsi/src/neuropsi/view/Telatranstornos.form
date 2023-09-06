@@ -296,6 +296,7 @@
                                           <Component id="jButtonAdicionar" min="-2" max="-2" attributes="0"/>
                                           <Component id="jButtonIncluir" min="-2" max="-2" attributes="0"/>
                                           <Component id="jButtonRemover" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jButtonExcluirTag" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="jLabelTags" min="-2" max="-2" attributes="0"/>
@@ -331,6 +332,8 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jButtonRemover" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jButtonExcluirTag" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jLabelTags" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -483,6 +486,17 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRemoverActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonExcluirTag">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="0" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Excluir"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonExcluirTagActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

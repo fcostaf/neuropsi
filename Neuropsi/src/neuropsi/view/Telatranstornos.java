@@ -83,6 +83,7 @@ public class Telatranstornos extends javax.swing.JFrame {
         jLabelTags = new javax.swing.JLabel();
         jButtonIncluir = new javax.swing.JButton();
         jButtonRemover = new javax.swing.JButton();
+        jButtonExcluirTag = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -293,6 +294,14 @@ public class Telatranstornos extends javax.swing.JFrame {
             }
         });
 
+        jButtonExcluirTag.setForeground(new java.awt.Color(255, 0, 51));
+        jButtonExcluirTag.setText("Excluir");
+        jButtonExcluirTag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirTagActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -340,7 +349,8 @@ public class Telatranstornos extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButtonAdicionar)
                                     .addComponent(jButtonIncluir)
-                                    .addComponent(jButtonRemover)))
+                                    .addComponent(jButtonRemover)
+                                    .addComponent(jButtonExcluirTag)))
                             .addComponent(jLabelTags))))
                 .addContainerGap(133, Short.MAX_VALUE))
         );
@@ -367,6 +377,8 @@ public class Telatranstornos extends javax.swing.JFrame {
                             .addComponent(jButtonIncluir))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonRemover)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonExcluirTag)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelTags)))
                 .addGap(26, 26, 26)
@@ -601,6 +613,20 @@ public class Telatranstornos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonRemoverActionPerformed
 
+    private void jButtonExcluirTagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirTagActionPerformed
+        CitacaoController cc=new CitacaoController();
+        int certeza=JOptionPane.showConfirmDialog(this, "Tem certeza de que deseja excluir?","Confirmação",JOptionPane.YES_NO_OPTION);
+        if(certeza==0){
+            try {
+                cc.excluirTag((String)getjComboBoxTags().getSelectedItem());
+                JOptionPane.showMessageDialog(this, (String)getjComboBoxTags().getSelectedItem()+" excluído!");
+                getjComboBoxTags().removeItem(getjComboBoxTags().getSelectedItem());
+            } catch (ExceptionDAO ex) {
+                Logger.getLogger(Telacadastropacientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jButtonExcluirTagActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -650,6 +676,7 @@ public class Telatranstornos extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCadastrar1;
     private javax.swing.JButton jButtonExcluir;
     private javax.swing.JButton jButtonExcluir1;
+    private javax.swing.JButton jButtonExcluirTag;
     private javax.swing.JButton jButtonFechar;
     private javax.swing.JButton jButtonIncluir;
     private javax.swing.JButton jButtonLimpar;
@@ -940,6 +967,63 @@ public class Telatranstornos extends javax.swing.JFrame {
     public void setjTextFieldNovaTag(JTextField jTextFieldNovaTag) {
         this.jTextFieldNovaTag = jTextFieldNovaTag;
     }
+
+    public Collection<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(Collection<String> tags) {
+        this.tags = tags;
+    }
+
+    public JButton getjButtonBuscarCitacao() {
+        return jButtonBuscarCitacao;
+    }
+
+    public void setjButtonBuscarCitacao(JButton jButtonBuscarCitacao) {
+        this.jButtonBuscarCitacao = jButtonBuscarCitacao;
+    }
+
+    public JButton getjButtonExcluirTag() {
+        return jButtonExcluirTag;
+    }
+
+    public void setjButtonExcluirTag(JButton jButtonExcluirTag) {
+        this.jButtonExcluirTag = jButtonExcluirTag;
+    }
+
+    public JButton getjButtonFechar() {
+        return jButtonFechar;
+    }
+
+    public void setjButtonFechar(JButton jButtonFechar) {
+        this.jButtonFechar = jButtonFechar;
+    }
+
+    public JButton getjButtonIncluir() {
+        return jButtonIncluir;
+    }
+
+    public void setjButtonIncluir(JButton jButtonIncluir) {
+        this.jButtonIncluir = jButtonIncluir;
+    }
+
+    public JButton getjButtonRemover() {
+        return jButtonRemover;
+    }
+
+    public void setjButtonRemover(JButton jButtonRemover) {
+        this.jButtonRemover = jButtonRemover;
+    }
+
+    public JComboBox<String> getjComboBoxTags() {
+        return jComboBoxTags;
+    }
+
+    public void setjComboBoxTags(JComboBox<String> jComboBoxTags) {
+        this.jComboBoxTags = jComboBoxTags;
+    }
+    
     
     public void selecionaDadosSintomas(){
         getjTextFieldNome().setText(neuropsi.Neuropsi.nome);

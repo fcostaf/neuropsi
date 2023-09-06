@@ -103,4 +103,8 @@ public class Citacao {
     public ArrayList<String> coletarTags(String idcitacao) throws ExceptionDAO {
         return new CitacaoDAO().coletarTags(idcitacao);
     }
+
+    public void excluirTag(String tag) throws ExceptionDAO {
+        new CitacaoDAO().excluirTag(tag);
+    }
 }

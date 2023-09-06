@@ -218,6 +218,33 @@ public class CitacaoDAO {
         }
     }
     
+    public void excluirTag(String tag) throws ExceptionDAO{
+        int idTag=getIdTag(tag);
+        String sql="delete from tag where idtag=?";
+        String sql1="delete from citacao_tag where tag=?";
+        PreparedStatement stmt=null;
+        PreparedStatement stmt1=null;
+        Connection connection=null;
+        try{
+            connection=new Conexao().getConnection();
+            stmt1=connection.prepareStatement(sql1);
+            stmt1.setInt(1, getIdTag(tag));
+            stmt1.execute();
+            
+            stmt=connection.prepareStatement(sql);
+            stmt.setInt(1, idTag);
+            stmt.execute();
+        }catch(SQLException e){
+            e.printStackTrace();
+            throw new ExceptionDAO("Erro ao excluir citacao: "+e);
+        }finally{
+            try {if(stmt!=null){stmt.close();}
+            }catch (SQLException e){e.printStackTrace();}
+            try {if(connection !=null){connection.close();}
+            }catch(SQLException e){e.printStackTrace();}
+        }
+    }
+    
     public ArrayList<String> listarTags() throws ExceptionDAO{
         ResultSet rs=null;
         Connection conn=null;
@@ -333,5 +360,31 @@ public class CitacaoDAO {
                             }catch(Exception e){
                                 e.printStackTrace();}}
             }return listaDeTags;
+    }
+    
+    public int getIdTag(String tag) throws ExceptionDAO{
+        ResultSet rs=null;
+        Connection conn=null;
+        PreparedStatement stmt=null;
+        int idTag=0;
+        try{
+            String sql="select idtag from tag where descricao=?";
+            conn=new Conexao().getConnection();
+            stmt=conn.prepareStatement(sql);
+            stmt.setString(1, tag);
+            rs=stmt.executeQuery();
+            if(rs!=null){
+                    while(rs.next()){
+                        idTag=rs.getInt("idtag");}}
+        }catch(SQLException e){e.printStackTrace();
+                throw new ExceptionDAO("Erro no getIdTag: "+e);
+        }finally{try{if(rs!=null){rs.close();}
+                }catch(SQLException e){e.printStackTrace();}
+                try{if(stmt!=null){stmt.close();}
+                }catch(SQLException e){e.printStackTrace();
+                }try{if(conn!=null){conn.close();}
+                }catch(Exception e){
+                    e.printStackTrace();}}
+        return idTag;
     }
 }

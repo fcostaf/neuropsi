@@ -168,6 +168,17 @@ public class CitacaoDAO {
         String sql="update citacao set fonte=?,descricao=? where idcitacao=?";
         PreparedStatement stmt=null;
         Connection connection=null;
+        ArrayList<String> tagsAntigas=coletarTags(c.getIdcitacao());
+        ArrayList<String> tagsAcrescentar=null;
+        ArrayList<String> tagsExcluir=null;
+        for(String tag:c.getTags()){
+            if(tagsAntigas.contains(tag)){
+                
+            }else{
+                
+            }
+        }
+        
         try{
             connection=new Conexao().getConnection();
             stmt=connection.prepareStatement(sql);

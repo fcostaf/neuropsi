@@ -7,9 +7,13 @@ v- Fazer ligação citacao_tag
 - Excluir citacao
 - Limpar citacao
 
+
+ALTERAR CITACAO
+-desmembrar cadastrar citacao para utilizar método conecta tag_citacao
+
 MOUSECLICKED CONSULTA CITACAO
-- não dá pra remover tags
-- talvez esteja cortando a última letra da última tag
+v- não dá pra remover tags
+v- talvez esteja cortando a última letra da última tag
 
 TABELAS
 - trocar em neuropsi os vários selecionaDados por tipos segundo o número de colunas e associar às variáveis String tableN

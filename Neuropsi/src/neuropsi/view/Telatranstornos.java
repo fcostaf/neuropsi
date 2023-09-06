@@ -951,12 +951,13 @@ public class Telatranstornos extends javax.swing.JFrame {
         getjTextAreaCitacao().setText(neuropsi.Neuropsi.table3);
         
         CitacaoController cc=new CitacaoController();
-        ArrayList<String> Tags=cc.coletarTags(neuropsi.Neuropsi.table1);
+        //ArrayList<String> Tags=cc.coletarTags(neuropsi.Neuropsi.table1);
+        tags=cc.coletarTags(neuropsi.Neuropsi.table1);
         String listaTags="";
-        for(String tag:Tags){
+        for(String tag:tags){
                 listaTags+=tag+",";
             }
-            if(Tags.size()>=1){
+            if(tags.size()>=1){
                 jLabelTags.setText(listaTags.substring(0, listaTags.length()-1));
             }else{
                 jLabelTags.setText("");

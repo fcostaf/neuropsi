@@ -16,12 +16,7 @@ import neuropsi.model.Citacao;
  */
 public class CitacaoDAO {
     public void cadastrarCitacao(Citacao c) throws ExceptionDAO, SQLException{
-        
-        ArrayList<String> tags=c.getTags();
-        ArrayList<Integer> idtags=new ArrayList();
-
-        //CADASTRA A CITACAO
-        
+                
         String sql="insert into citacao (fonte,descricao) values (?,?)";
         PreparedStatement stmt=null;
         Connection connection=null;
@@ -41,35 +36,41 @@ public class CitacaoDAO {
             try {if(connection !=null){connection.close();}
             }catch(SQLException e){e.printStackTrace();}
         }
+        conectarTagCitacao(c);
+    }
+        
+    public void conectarTagCitacao(Citacao c) throws ExceptionDAO, SQLException{    
+        ArrayList<String> tags=c.getTags();
+        ArrayList<Integer> idtags=new ArrayList();
         
         //CADASTRA TAG NAO EXISTENTE
-        
+
         for(String tag:tags){
-            String sql1="insert into tag (descricao) values (?)";
-            PreparedStatement stmt1=null;
-            Connection connection1=null;
+            String sql="insert into tag (descricao) values (?)";
+            PreparedStatement stmt=null;
+            Connection connection=null;
             
             //CONFERE SE TAG JA EXISTE
             if(listarTags().contains(tag)){
                 
             }else{
                 try{
-                    connection1=new Conexao().getConnection();
-                    stmt1=connection1.prepareStatement(sql1);
-                    stmt1.setString(1,tag);
-                    stmt1.execute();
+                    connection=new Conexao().getConnection();
+                    stmt=connection.prepareStatement(sql);
+                    stmt.setString(1,tag);
+                    stmt.execute();
 
                 }catch(SQLException e){
                     e.printStackTrace();
                     throw new ExceptionDAO("Erro ao cadastrar tag:"+e);
                 }finally{
-                    try {if(stmt1!=null){stmt1.close();}
+                    try {if(stmt!=null){stmt.close();}
                     }catch (SQLException e){e.printStackTrace();}
-                    try {if(connection1 !=null){connection.close();}
+                    try {if(connection !=null){connection.close();}
                     }catch(SQLException e){e.printStackTrace();}
                 }
             }
-            
+        
             //SELECIONA IDTAG E ADD AO ARRAY IDTAGS
             ResultSet rs4=null;
             PreparedStatement stmt4=null;
@@ -122,7 +123,7 @@ public class CitacaoDAO {
                         throw new ExceptionDAO("Erro ao selecionar idcitacao: "+e);
                 }finally{try{if(rs3!=null){rs3.close();}
                         }catch(SQLException e){e.printStackTrace();}
-                        try{if(stmt!=null){stmt.close();}
+                        try{if(stmt3!=null){stmt3.close();}
                         }catch(SQLException e){e.printStackTrace();
                         }try{if(conn!=null){conn.close();}
                         }catch(Exception e){

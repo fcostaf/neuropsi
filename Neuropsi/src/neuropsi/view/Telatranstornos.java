@@ -500,7 +500,10 @@ public class Telatranstornos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCadastrar1ActionPerformed
 
     private void jButtonLimpar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpar1ActionPerformed
-        // TODO add your handling code here:
+        jTextFieldFonte.setText("");
+        jTextAreaCitacao.setText("");
+        jComboBoxTags.setSelectedIndex(0);
+        jLabelTags.setText("");
     }//GEN-LAST:event_jButtonLimpar1ActionPerformed
 
     private void jButtonBuscarCitacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarCitacaoActionPerformed

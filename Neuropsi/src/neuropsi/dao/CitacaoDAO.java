@@ -165,7 +165,7 @@ public class CitacaoDAO {
 
     }
     
-    public void alterarCitacao(Citacao c) throws ExceptionDAO{
+    public void alterarCitacao(Citacao c) throws ExceptionDAO, SQLException{
         String sql="update citacao set fonte=?,descricao=? where idcitacao=?";
         PreparedStatement stmt=null;
         Connection connection=null;
@@ -196,6 +196,7 @@ public class CitacaoDAO {
             try {if(connection !=null){connection.close();}
             }catch(SQLException e){e.printStackTrace();}
         }
+        conectarTagCitacao(c);
     }
     
     public void excluirCitacao(int id) throws ExceptionDAO{

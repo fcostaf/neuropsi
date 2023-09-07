@@ -17,7 +17,7 @@ import neuropsi.model.Citacao;
 public class CitacaoDAO {
     public void cadastrarCitacao(Citacao c) throws ExceptionDAO, SQLException{
                 
-        String sql="insert into citacao (fonte,descricao) values (?,?)";
+        String sql="insert into citacao (fonte,descricao,comentarios) values (?,?,?)";
         PreparedStatement stmt=null;
         Connection connection=null;
         try{
@@ -25,6 +25,7 @@ public class CitacaoDAO {
             stmt=connection.prepareStatement(sql);
             stmt.setString(1,c.getFonte());
             stmt.setString(2,c.getDescricao());
+            stmt.setString(3,c.getComentarios());
             stmt.execute();
             
         }catch(SQLException e){
@@ -201,10 +202,16 @@ public class CitacaoDAO {
     
     public void excluirCitacao(int id) throws ExceptionDAO{
         String sql="delete from citacao where idcitacao=?";
+        String sql1="delete from citacao_tag where citacao=?";
         PreparedStatement stmt=null;
+        PreparedStatement stmt1=null;
         Connection connection=null;
         try{
             connection=new Conexao().getConnection();
+            stmt1=connection.prepareStatement(sql1);
+            stmt1.setInt(1, id);
+            stmt1.execute();
+            
             stmt=connection.prepareStatement(sql);
             stmt.setInt(1, id);
             stmt.execute();
@@ -293,6 +300,7 @@ public class CitacaoDAO {
                     c.setIdcitacao(rs.getString("idcitacao"));
                     c.setFonte(rs.getString("fonte"));
                     c.setDescricao(rs.getString("descricao"));
+                    c.setComentarios(rs.getString("comentarios"));
                     listaDeCitacao.add(c);}}
                 }catch(SQLException e) {e.printStackTrace();
                         throw new ExceptionDAO("Erro ao listar citações: "+e);

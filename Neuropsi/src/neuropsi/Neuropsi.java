@@ -70,9 +70,10 @@ public class Neuropsi {
         descricao=descrica;
     }
     
-    public static void selecionaDadosGeral(String campo1,String campo2,String campo3){
+    public static void selecionaDados4(String campo1,String campo2,String campo3,String campo4){
         table1=campo1;
         table2=campo2;
         table3=campo3;
+        table4=campo4;
     }
 }

@@ -111,10 +111,11 @@
         <Component class="javax.swing.JTable" name="jTableConsultaCitacao">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="3" rowCount="0">
+              <Table columnCount="4" rowCount="0">
                 <Column editable="false" title="idcitacao" type="java.lang.Object"/>
                 <Column editable="false" title="Fonte" type="java.lang.Object"/>
                 <Column editable="false" title="Citacao" type="java.lang.Object"/>
+                <Column editable="false" title="Comentarios" type="java.lang.Object"/>
               </Table>
             </Property>
           </Properties>

@@ -18,6 +18,7 @@ public class Citacao {
     private String fonte;
     private String descricao;
     private ArrayList<String> tags;
+    private String comentarios;
 
     public Citacao() {
     }
@@ -35,6 +36,13 @@ public class Citacao {
         this.fonte = fonte;
         this.descricao = descricao;
         this.tags = tags;
+    }
+
+    public Citacao(String fonte, String descricao, ArrayList<String> tags, String comentarios) {
+        this.fonte = fonte;
+        this.descricao = descricao;
+        this.tags = tags;
+        this.comentarios = comentarios;
     }
 
     
@@ -78,18 +86,26 @@ public class Citacao {
     public void setTags(ArrayList<String> tags) {
         this.tags = tags;
     }
+
+    public String getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(String comentarios) {
+        this.comentarios = comentarios;
+    }
     
     public void cadastrarCitacao(Citacao c) throws ExceptionDAO, SQLException{
         new CitacaoDAO().cadastrarCitacao(c);
     }
 
-    public void alterarCitacao(Citacao c) throws ExceptionDAO{
+    public void alterarCitacao(Citacao c) throws ExceptionDAO, SQLException{
         new CitacaoDAO().alterarCitacao(c);
     }
     
     public void excluirCitacao(Citacao c) throws ExceptionDAO{
-        int idcitacao=Integer.parseInt(c.idcitacao);
-        new CitacaoDAO().excluirCitacao(idcitacao);
+        int id=Integer.parseInt(c.idcitacao);
+        new CitacaoDAO().excluirCitacao(id);
     }
     
     public ArrayList<String> listarTags() throws ExceptionDAO{

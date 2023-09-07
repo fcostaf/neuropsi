@@ -84,6 +84,9 @@ public class Telatranstornos extends javax.swing.JFrame {
         jButtonIncluir = new javax.swing.JButton();
         jButtonRemover = new javax.swing.JButton();
         jButtonExcluirTag = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextAreaComentarios = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -295,12 +298,18 @@ public class Telatranstornos extends javax.swing.JFrame {
         });
 
         jButtonExcluirTag.setForeground(new java.awt.Color(255, 0, 51));
-        jButtonExcluirTag.setText("Excluir");
+        jButtonExcluirTag.setText("Excluir tag");
         jButtonExcluirTag.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonExcluirTagActionPerformed(evt);
             }
         });
+
+        jLabel9.setText("Comentários:");
+
+        jTextAreaComentarios.setColumns(20);
+        jTextAreaComentarios.setRows(5);
+        jScrollPane3.setViewportView(jTextAreaComentarios);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -333,26 +342,33 @@ public class Telatranstornos extends javax.swing.JFrame {
                                         .addComponent(jButtonBuscarCitacao))
                                     .addComponent(jScrollPane2)
                                     .addComponent(jTextFieldFonte))))
-                        .addGap(43, 43, 43)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addGap(31, 31, 31)
-                                        .addComponent(jComboBoxTags, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextFieldNovaTag)))
-                                .addGap(18, 18, 18)
+                                .addGap(43, 43, 43)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButtonAdicionar)
-                                    .addComponent(jButtonIncluir)
-                                    .addComponent(jButtonRemover)
-                                    .addComponent(jButtonExcluirTag)))
-                            .addComponent(jLabelTags))))
-                .addContainerGap(133, Short.MAX_VALUE))
+                                    .addComponent(jLabelTags)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jLabel6)
+                                                .addGap(31, 31, 31)
+                                                .addComponent(jComboBoxTags, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jLabel8)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jTextFieldNovaTag)))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jButtonAdicionar)
+                                            .addComponent(jButtonIncluir)
+                                            .addComponent(jButtonRemover)
+                                            .addComponent(jButtonExcluirTag)))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -379,6 +395,10 @@ public class Telatranstornos extends javax.swing.JFrame {
                         .addComponent(jButtonRemover)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonExcluirTag)
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelTags)))
                 .addGap(26, 26, 26)
@@ -392,7 +412,7 @@ public class Telatranstornos extends javax.swing.JFrame {
                     .addComponent(jButtonExcluir1))
                 .addGap(52, 52, 52)
                 .addComponent(jButtonFechar)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Citações", jPanel2);
@@ -484,26 +504,32 @@ public class Telatranstornos extends javax.swing.JFrame {
         CitacaoController cc=new CitacaoController();
         String fonte=jTextFieldFonte.getText();
         ArrayList<String> listaTags=new ArrayList();
+        String comentarios=jTextAreaComentarios.getText();
         for(String tag:jLabelTags.getText().split(",")){
             listaTags.add(tag);
         }
         //String filhos=String.valueOf(jComboBoxFilhos.getSelectedItem());
         String descricao=jTextAreaCitacao.getText();
         try {
-            cc.cadastrarCitacao(fonte,descricao,listaTags);
+            cc.cadastrarCitacao(fonte,descricao,listaTags,comentarios);
             JOptionPane.showMessageDialog(this, "Cadastrado!");
         } catch (ExceptionDAO ex) {
             Logger.getLogger(Telatranstornos.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(Telatranstornos.class.getName()).log(Level.SEVERE, null, ex);
         }
+        jButtonLimpar1ActionPerformed(evt);
     }//GEN-LAST:event_jButtonCadastrar1ActionPerformed
 
     private void jButtonLimpar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpar1ActionPerformed
         jTextFieldFonte.setText("");
         jTextAreaCitacao.setText("");
+        jTextAreaComentarios.setText("");
         jComboBoxTags.setSelectedIndex(0);
         jLabelTags.setText("");
+        jButtonCadastrar1.setEnabled(true);
+        jButtonExcluir1.setEnabled(false);
+        jButtonAlterar1.setEnabled(false);
     }//GEN-LAST:event_jButtonLimpar1ActionPerformed
 
     private void jButtonBuscarCitacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarCitacaoActionPerformed
@@ -529,7 +555,7 @@ public class Telatranstornos extends javax.swing.JFrame {
             Iterator<Citacao> iterator=listaCitacao.iterator();
             while(iterator.hasNext()){
                 Citacao c=iterator.next();
-                tableModel.addRow(new Object[]{c.getIdcitacao(),c.getFonte(),c.getDescricao()});
+                tableModel.addRow(new Object[]{c.getIdcitacao(),c.getFonte(),c.getDescricao(),c.getComentarios()});
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,"Erro: "+e);
@@ -553,12 +579,24 @@ public class Telatranstornos extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Alterado!");
             } catch (ExceptionDAO ex) {
                 Logger.getLogger(Telatranstornos.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Telatranstornos.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_jButtonAlterar1ActionPerformed
 
     private void jButtonExcluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluir1ActionPerformed
-        // TODO add your handling code here:
+        CitacaoController cc=new CitacaoController();
+        int certeza=JOptionPane.showConfirmDialog(this, "Tem certeza de que deseja excluir?","Confirmação",JOptionPane.YES_NO_OPTION);
+        if(certeza==0){
+            try {
+                cc.excluirCitacao(neuropsi.Neuropsi.table1);
+                JOptionPane.showMessageDialog(this, "Excluído!");
+            } catch (ExceptionDAO ex) {
+                Logger.getLogger(Telacadastropacientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            jButtonLimpar1ActionPerformed(evt);
+        }
     }//GEN-LAST:event_jButtonExcluir1ActionPerformed
 
     private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed
@@ -694,13 +732,16 @@ public class Telatranstornos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelTags;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextAreaCitacao;
+    private javax.swing.JTextArea jTextAreaComentarios;
     private javax.swing.JTextArea jTextAreaDescricao;
     private javax.swing.JTextField jTextFieldFonte;
     private javax.swing.JTextField jTextFieldNome;
@@ -1026,6 +1067,30 @@ public class Telatranstornos extends javax.swing.JFrame {
     public void setjComboBoxTags(JComboBox<String> jComboBoxTags) {
         this.jComboBoxTags = jComboBoxTags;
     }
+
+    public JLabel getjLabel9() {
+        return jLabel9;
+    }
+
+    public void setjLabel9(JLabel jLabel9) {
+        this.jLabel9 = jLabel9;
+    }
+
+    public JScrollPane getjScrollPane3() {
+        return jScrollPane3;
+    }
+
+    public void setjScrollPane3(JScrollPane jScrollPane3) {
+        this.jScrollPane3 = jScrollPane3;
+    }
+
+    public JTextArea getjTextAreaComentarios() {
+        return jTextAreaComentarios;
+    }
+
+    public void setjTextAreaComentarios(JTextArea jTextAreaComentarios) {
+        this.jTextAreaComentarios = jTextAreaComentarios;
+    }
     
     
     public void selecionaDadosSintomas(){
@@ -1036,6 +1101,7 @@ public class Telatranstornos extends javax.swing.JFrame {
     public void selecionaDadosCitacao() throws ExceptionDAO{
         getjTextFieldFonte().setText(neuropsi.Neuropsi.table2);
         getjTextAreaCitacao().setText(neuropsi.Neuropsi.table3);
+        getjTextAreaComentarios().setText(neuropsi.Neuropsi.table4);
         
         CitacaoController cc=new CitacaoController();
         //ArrayList<String> Tags=cc.coletarTags(neuropsi.Neuropsi.table1);

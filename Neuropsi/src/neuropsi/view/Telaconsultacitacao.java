@@ -66,11 +66,11 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
 
             },
             new String [] {
-                "idcitacao", "Fonte", "Citacao"
+                "idcitacao", "Fonte", "Citacao", "Comentarios"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -173,8 +173,9 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
             String campo1=(String)jTableConsultaCitacao.getModel().getValueAt(jTableConsultaCitacao.getSelectedRow(),0);
             String campo2=(String)jTableConsultaCitacao.getModel().getValueAt(jTableConsultaCitacao.getSelectedRow(),1);
             String campo3=(String)jTableConsultaCitacao.getModel().getValueAt(jTableConsultaCitacao.getSelectedRow(),2);
+            String campo4=(String)jTableConsultaCitacao.getModel().getValueAt(jTableConsultaCitacao.getSelectedRow(),3);
                         
-            neuropsi.Neuropsi.selecionaDadosGeral(campo1,campo2,campo3);
+            neuropsi.Neuropsi.selecionaDados4(campo1,campo2,campo3,campo4);
             this.setVisible(false);
             ttra.setVisible(true);
             try {

@@ -19,12 +19,12 @@ public class CitacaoController {
     public CitacaoController() {
     }
     
-    public void cadastrarCitacao(String fonte,String descricao,ArrayList<String> tags) throws ExceptionDAO, SQLException{
-        Citacao c=new Citacao(fonte,descricao,tags);
+    public void cadastrarCitacao(String fonte,String descricao,ArrayList<String> tags,String comentarios) throws ExceptionDAO, SQLException{
+        Citacao c=new Citacao(fonte,descricao,tags,comentarios);
         c.cadastrarCitacao(c);
     }
     
-    public void alterarCitacao(String idcitacao,String fonte,String descricao,ArrayList<String> tags) throws ExceptionDAO{
+    public void alterarCitacao(String idcitacao,String fonte,String descricao,ArrayList<String> tags) throws ExceptionDAO, SQLException{
         Citacao c=new Citacao(idcitacao,fonte,descricao,tags);
         c.alterarCitacao(c);
     }

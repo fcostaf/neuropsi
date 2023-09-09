@@ -157,26 +157,17 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
             jLabelTagsConsulta.setText("");
         }
         //
-        
-        
-        CitacaoController cc=new CitacaoController();
         /* ESSA PARTE É REDUNANTE, AS TAGS JÁ ESTÃO LISTADAS
         try {
             tags = cc.listarTags();
         } catch (ExceptionDAO ex) {
             Logger.getLogger(Telatranstornos.class.getName()).log(Level.SEVERE, null, ex);
         }*/
-        for(String tag:tags){
-            getjComboBoxTagConsulta().addItem(tag);
-        }
-        
-        //
+        CitacaoController cc=new CitacaoController();
         int n=0;
-        ArrayList<Citacao> filtroCitacao=new ArrayList<>();
         try{
-            DefaultTableModel tableModel=(DefaultTableModel)getjTableConsultaCitacao().getModel();
-            
-            //CitacaoController cc=new CitacaoController();
+            jComboBoxTagConsulta.removeAllItems();
+            ArrayList<Citacao> filtroCitacao=new ArrayList<>();
             ArrayList<Citacao> listaCitacao=cc.listarCitacao();
             
             Iterator<Citacao> iterator=listaCitacao.iterator();
@@ -186,10 +177,21 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
                     if(c.getTags().contains(tag)){
                         n+=1;
                     }
+                }if(n==tags.size()){
+                    filtroCitacao.add(c);
                 }
-                
-                tableModel.addRow(new Object[]{c.getIdcitacao(),c.getFonte(),c.getDescricao(),c.getComentarios()});
+                n=0;
             }
+            Iterator<Citacao> iteratorF=filtroCitacao.iterator();
+            while(iteratorF.hasNext()){
+                Citacao c=iteratorF.next();
+                DefaultTableModel tableModel=(DefaultTableModel)getjTableConsultaCitacao().getModel();
+                tableModel.addRow(new Object[]{c.getIdcitacao(),c.getFonte(),c.getDescricao(),c.getComentarios()});
+                for(String tag:c.getTags()){
+                    jComboBoxTagConsulta.addItem(tag);
+                }
+            }
+            
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,"Erro: "+e);
         }

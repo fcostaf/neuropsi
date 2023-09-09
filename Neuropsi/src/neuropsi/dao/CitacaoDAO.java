@@ -412,44 +412,4 @@ public class CitacaoDAO {
                     e.printStackTrace();}}
         return idTag;
     }
-
-    /*public ArrayList<String> filtrarCitacao(String tag) throws ExceptionDAO {
-        ArrayList<Citacao> listaDeCitacoes=null;
-        listaDeCitacoes=new ArrayList<>();
-        ArrayList<String> idtags=new ArrayList<>();
-        for(String tag:tags){
-            idtags.add(Integer.toString(getIdTag(tag)));
-        }
-        ResultSet rs=null;
-        Connection conn=null;
-        PreparedStatement stmt=null;
-        Citacao c=null;
-        
-        ArrayList<String> idcitacoes=new ArrayList<>();
-        for(String idtag:idtags){
-            try{
-                String sql="select * from citacao_tag where tag="+idtag;
-                conn=new Conexao().getConnection();
-                stmt=conn.prepareStatement(sql);
-                rs=stmt.executeQuery();
-                if(rs!=null){
-                    while(rs.next()){
-                        idcitacoes.add(Integer.toString(rs.getInt("citacao")));
-                    }
-                }
-                    }catch(SQLException e) {e.printStackTrace();
-                            throw new ExceptionDAO("Erro ao listar paciente: "+e);
-                    }finally{try{if(rs!=null){rs.close();}
-                            }catch(SQLException e){e.printStackTrace();}
-                            try{if(stmt!=null){stmt.close();}
-                            }catch(SQLException e){e.printStackTrace();
-                            }try{if(conn!=null){conn.close();}
-                            }catch(Exception e){
-                                e.printStackTrace();}
-                            }
-            }
-        return listaDeCitacoes;
-        //c=new Citacao();
-        //c.setIdcitacao(rs.getString("idpaciente"));
-    }*/
 }

@@ -54,22 +54,4 @@ public class CitacaoController {
         Citacao c=new Citacao();
         c.excluirTag(tag);
     }
-
-    //public ArrayList<Citacao> filtrarCitacao() {
-    //    Citacao c=new Citacao();
-    //    return c.filtrarCitacao(tags);
-    //}
-
-    public ArrayList<Citacao> filtrarCitacao(Collection<String> tags) {
-        String[] variavel={"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
-        
-        for(String tag:tags){
-            
-        }
-        
-        Citacao c=new Citacao();
-        return c.filtrarCitacao(tags);
-        
-        
-    }
 }

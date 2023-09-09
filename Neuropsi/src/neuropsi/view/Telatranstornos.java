@@ -228,7 +228,9 @@ public class Telatranstornos extends javax.swing.JFrame {
         jLabel7.setText("Citação:");
 
         jTextAreaCitacao.setColumns(20);
+        jTextAreaCitacao.setLineWrap(true);
         jTextAreaCitacao.setRows(5);
+        jTextAreaCitacao.setWrapStyleWord(true);
         jScrollPane2.setViewportView(jTextAreaCitacao);
 
         jButtonCadastrar1.setText("Cadastrar");
@@ -308,7 +310,9 @@ public class Telatranstornos extends javax.swing.JFrame {
         jLabel9.setText("Comentários:");
 
         jTextAreaComentarios.setColumns(20);
+        jTextAreaComentarios.setLineWrap(true);
         jTextAreaComentarios.setRows(5);
+        jTextAreaComentarios.setWrapStyleWord(true);
         jScrollPane3.setViewportView(jTextAreaComentarios);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -342,32 +346,27 @@ public class Telatranstornos extends javax.swing.JFrame {
                                         .addComponent(jButtonBuscarCitacao))
                                     .addComponent(jScrollPane2)
                                     .addComponent(jTextFieldFonte))))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(43, 43, 43)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelTags)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(jLabel6)
-                                                .addGap(31, 31, 31)
-                                                .addComponent(jComboBoxTags, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(jLabel8)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jTextFieldNovaTag)))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jButtonAdicionar)
-                                            .addComponent(jButtonIncluir)
-                                            .addComponent(jButtonRemover)
-                                            .addComponent(jButtonExcluirTag)))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel6)
+                                        .addGap(31, 31, 31)
+                                        .addComponent(jComboBoxTags, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTextFieldNovaTag)))
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(jButtonAdicionar)
+                                    .addComponent(jButtonIncluir)
+                                    .addComponent(jButtonRemover)
+                                    .addComponent(jButtonExcluirTag)))
+                            .addComponent(jLabel9)
+                            .addComponent(jScrollPane3)
+                            .addComponent(jLabelTags, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(129, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -400,7 +399,7 @@ public class Telatranstornos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelTags)))
+                        .addComponent(jLabelTags, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCadastrar1)
@@ -519,6 +518,7 @@ public class Telatranstornos extends javax.swing.JFrame {
             Logger.getLogger(Telatranstornos.class.getName()).log(Level.SEVERE, null, ex);
         }
         jButtonLimpar1ActionPerformed(evt);
+        tags=new ArrayList();
     }//GEN-LAST:event_jButtonCadastrar1ActionPerformed
 
     private void jButtonLimpar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpar1ActionPerformed

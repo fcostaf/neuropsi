@@ -6,6 +6,7 @@
 package neuropsi.view;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -59,8 +60,6 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
 
         jLabel2.setText("Tag:");
 
-        jLabelTagsConsulta.setText("jLabel3");
-
         jTableConsultaCitacao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -103,10 +102,7 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabelTagsConsulta))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(79, 79, 79)
                         .addComponent(jLabel2)
@@ -114,7 +110,10 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
                         .addComponent(jComboBoxTagConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonFiltrar)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonFiltrar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelTagsConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel1)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -133,10 +132,9 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxTagConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jButtonFiltrar))
-                .addGap(41, 41, 41)
-                .addComponent(jLabelTagsConsulta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jButtonFiltrar)
+                    .addComponent(jLabelTagsConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(69, 69, 69)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonFechar)
@@ -145,19 +143,29 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    Collection <String> tags=new ArrayList();
     private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
-        /*//String nome=jTextFieldBuscar.getText();
+        /*tags.add((String)jComboBoxTagConsulta.getSelectedItem());
+        String listaTags="";
+        for(String tag:tags){
+            listaTags+=tag+",";
+        }
+        if(tags.size()>=1){
+            jLabelTagsConsulta.setText(listaTags.substring(0, listaTags.length()-1));
+        }else{
+            jLabelTagsConsulta.setText("");
+        }
+        
         try{
             DefaultTableModel tableModel=(DefaultTableModel)jTableConsultaCitacao.getModel();
             
             CitacaoController cc=new CitacaoController();
-            ArrayList<Citacao> listaCitacao=cc.filtrarCitacao();
+            ArrayList<Citacao> listaCitacao=cc.filtrarCitacao(tags);
             
             Iterator<Citacao> iterator=listaCitacao.iterator();
             while(iterator.hasNext()){
                 Citacao c=iterator.next();
-                tableModel.addRow(new Object[]{c.getIdcitacao(),c.getFonte(),c.getDescricao()});
+                tableModel.addRow(new Object[]{c.getIdcitacao(),c.getFonte(),c.getDescricao(),c.getComentarios()});
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,"Erro: "+e);

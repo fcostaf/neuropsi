@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import neuropsi.model.Citacao;
 /**
  *
@@ -38,6 +39,7 @@ public class CitacaoDAO {
             }catch(SQLException e){e.printStackTrace();}
         }
         conectarTagCitacao(c);
+        neuropsi.Neuropsi.limpaVariaveis();
     }
         
     public void conectarTagCitacao(Citacao c) throws ExceptionDAO, SQLException{    
@@ -167,6 +169,7 @@ public class CitacaoDAO {
     }
     
     public void alterarCitacao(Citacao c) throws ExceptionDAO, SQLException{
+        excluirCitacaoTag(Integer.parseInt(c.getIdcitacao()));
         String sql="update citacao set fonte=?,descricao=? where idcitacao=?";
         PreparedStatement stmt=null;
         Connection connection=null;
@@ -199,19 +202,32 @@ public class CitacaoDAO {
         }
         conectarTagCitacao(c);
     }
-    
-    public void excluirCitacao(int id) throws ExceptionDAO{
-        String sql="delete from citacao where idcitacao=?";
-        String sql1="delete from citacao_tag where citacao=?";
+    public void excluirCitacaoTag(int id) throws ExceptionDAO{
+        String sql="delete from citacao_tag where citacao=?";
         PreparedStatement stmt=null;
-        PreparedStatement stmt1=null;
         Connection connection=null;
         try{
             connection=new Conexao().getConnection();
-            stmt1=connection.prepareStatement(sql1);
-            stmt1.setInt(1, id);
-            stmt1.execute();
-            
+            stmt=connection.prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.execute();
+        }catch(SQLException e){
+            e.printStackTrace();
+            throw new ExceptionDAO("Erro ao excluir citacao_tag: "+e);
+        }finally{
+            try {if(stmt!=null){stmt.close();}
+            }catch (SQLException e){e.printStackTrace();}
+            try {if(connection !=null){connection.close();}
+            }catch(SQLException e){e.printStackTrace();}
+        }
+    }
+    public void excluirCitacao(int id) throws ExceptionDAO{
+        excluirCitacaoTag(id);
+        String sql="delete from citacao where idcitacao=?";
+        PreparedStatement stmt=null;
+        Connection connection=null;
+        try{
+            connection=new Conexao().getConnection();
             stmt=connection.prepareStatement(sql);
             stmt.setInt(1, id);
             stmt.execute();
@@ -396,4 +412,47 @@ public class CitacaoDAO {
                     e.printStackTrace();}}
         return idTag;
     }
+
+    /*public void filtrarCitacao(Collection<String> tags) {
+        ResultSet rs=null;
+        Connection conn=null;
+        PreparedStatement stmt=null;
+        Citacao c=null;
+        ArrayList<Citacao> listaDeCitacoes=null;
+        listaDeCitacoes=new ArrayList<>();
+        for(String tag:tags){
+            try{
+                String sql="select * from paciente where nome like '%"+nome+"%' order by nome";
+                conn=new Conexao().getConnection();
+                stmt=conn.prepareStatement(sql);
+                rs=stmt.executeQuery();
+                if(rs!=null){
+                    
+                    while(rs.next()){
+                        p=new Paciente();
+                        p.setIdpaciente(rs.getString("idpaciente"));
+                        p.setNome(rs.getString("nome"));
+                        p.setComentario(rs.getString("comentario"));
+                        p.setCurso(rs.getString("curso"));
+                        p.setDn(rs.getString("dn"));
+                        p.setEscolaridade(rs.getString("escolaridade"));
+                        p.setEstado_civil(rs.getString("estado_civil"));
+                        p.setFilhos(rs.getString("filhos"));
+                        p.setLateralidade(rs.getString("lateralidade"));
+                        p.setLn(rs.getString("ln"));
+                        p.setProfissao(rs.getString("profissao"));
+                        p.setSexo(rs.getString("sexo"));
+                        listaDePacientes.add(p);}}
+                    }catch(SQLException e) {e.printStackTrace();
+                            throw new ExceptionDAO("Erro ao listar paciente: "+e);
+                    }finally{try{if(rs!=null){rs.close();}
+                            }catch(SQLException e){e.printStackTrace();}
+                            try{if(stmt!=null){stmt.close();}
+                            }catch(SQLException e){e.printStackTrace();
+                            }try{if(conn!=null){conn.close();}
+                            }catch(Exception e){
+                                e.printStackTrace();}
+                            }
+        }return listaDePacientes;
+    }*/
 }

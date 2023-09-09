@@ -16,7 +16,7 @@ v- Excluir citacao
 
 ----------------------------------------------------------------------------------------------
 
-- Continuar filtrar citacao na tela consultacitacao
+-- Continuar filtrar citacao na tela consultacitacao
 - Cadastrar, alterar if tag!=null?
 - Problema em duplicação de tags (após alterar deveria apagar tags?)
 

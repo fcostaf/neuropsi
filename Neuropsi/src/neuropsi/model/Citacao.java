@@ -7,6 +7,7 @@ package neuropsi.model;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import neuropsi.dao.ExceptionDAO;
 import neuropsi.dao.CitacaoDAO;
 /**
@@ -122,5 +123,9 @@ public class Citacao {
 
     public void excluirTag(String tag) throws ExceptionDAO {
         new CitacaoDAO().excluirTag(tag);
+    }
+
+    public void filtrarCitacao(Collection<String> tags) {
+        //new CitacaoDAO().filtrarCitacao(tags);
     }
 }

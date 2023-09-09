@@ -76,4 +76,27 @@ public class Neuropsi {
         table3=campo3;
         table4=campo4;
     }
+    
+    public static void limpaVariaveis(){
+        idpaciente="";
+        nome="";
+        sexo="";
+        lateralidade="";
+        dn="";
+        ln="";
+        escolaridade="";
+        curso="";
+        profissao="";
+        estado_civil="";
+        filhos="";
+        comentario="";
+
+        idsintoma="";
+        descricao="";
+
+        table1="";
+        table2="";
+        table3="";
+        table4="";
+    }
 }

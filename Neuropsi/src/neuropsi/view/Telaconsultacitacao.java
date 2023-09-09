@@ -145,7 +145,8 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     Collection <String> tags=new ArrayList();
     private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
-        /*tags.add((String)jComboBoxTagConsulta.getSelectedItem());
+        //lista as tags selecionadas no JLabel
+        tags.add((String)jComboBoxTagConsulta.getSelectedItem());
         String listaTags="";
         for(String tag:tags){
             listaTags+=tag+",";
@@ -155,21 +156,47 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
         }else{
             jLabelTagsConsulta.setText("");
         }
-        
+        //
+        /* ESSA PARTE É REDUNANTE, AS TAGS JÁ ESTÃO LISTADAS
+        try {
+            tags = cc.listarTags();
+        } catch (ExceptionDAO ex) {
+            Logger.getLogger(Telatranstornos.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+        CitacaoController cc=new CitacaoController();
+        int n=0;
         try{
-            DefaultTableModel tableModel=(DefaultTableModel)jTableConsultaCitacao.getModel();
-            
-            CitacaoController cc=new CitacaoController();
-            ArrayList<Citacao> listaCitacao=cc.filtrarCitacao(tags);
+            jComboBoxTagConsulta.removeAllItems();
+            ArrayList<Citacao> filtroCitacao=new ArrayList<>();
+            ArrayList<Citacao> listaCitacao=cc.listarCitacao();
             
             Iterator<Citacao> iterator=listaCitacao.iterator();
             while(iterator.hasNext()){
                 Citacao c=iterator.next();
-                tableModel.addRow(new Object[]{c.getIdcitacao(),c.getFonte(),c.getDescricao(),c.getComentarios()});
+                c.setTags(cc.coletarTags(c.getIdcitacao()));
+                for(String tag:tags){
+                    if(c.getTags().contains(tag)){
+                        n+=1;
+                    }
+                }if(n==tags.size()){
+                    filtroCitacao.add(c);
+                }
+                n=0;
             }
+            Iterator<Citacao> iteratorF=filtroCitacao.iterator();
+            DefaultTableModel tableModel=(DefaultTableModel)jTableConsultaCitacao.getModel();
+            tableModel.setRowCount(0);
+            while(iteratorF.hasNext()){
+                Citacao c=iteratorF.next();
+                tableModel.addRow(new Object[]{c.getIdcitacao(),c.getFonte(),c.getDescricao(),c.getComentarios()});
+                for(String tag:c.getTags()){
+                    jComboBoxTagConsulta.addItem(tag);
+                }
+            }
+            
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,"Erro: "+e);
-        }*/
+        }
     }//GEN-LAST:event_jButtonFiltrarActionPerformed
 
     private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed

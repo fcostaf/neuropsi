@@ -124,8 +124,4 @@ public class Citacao {
     public void excluirTag(String tag) throws ExceptionDAO {
         new CitacaoDAO().excluirTag(tag);
     }
-
-    public void filtrarCitacao(Collection<String> tags) {
-        //new CitacaoDAO().filtrarCitacao(tags);
-    }
 }

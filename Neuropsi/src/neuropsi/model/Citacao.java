@@ -125,7 +125,8 @@ public class Citacao {
         new CitacaoDAO().excluirTag(tag);
     }
 
-    public void filtrarCitacao(Collection<String> tags) {
-        //new CitacaoDAO().filtrarCitacao(tags);
+    public ArrayList<Citacao> filtrarCitacao(Collection<String> tags) {
+        return new CitacaoDAO().filtrarCitacao(tags);
+        
     }
 }

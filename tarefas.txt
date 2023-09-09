@@ -3,6 +3,9 @@ v- Fazer ligação citacao_tag
 	v- conferir se liga tag novas
 - Limpar citacao
 - Campo comentarios citacao
+- Problema em duplicação de tags (após alterar deveria apagar tags?). Quando altera só acrescenta as tags, ao invés de alterá-las
+
+Filtro1: cada clique em Filtrar reduz ComboBox às tags possíveis. Depois talvez dê para listar todas as citações e selecionar só as que possuem todas as tags.
 
 v MOUSECLICKED CONSULTA CITACAO
 v- não dá pra remover tags
@@ -16,12 +19,16 @@ v- Excluir citacao
 
 ----------------------------------------------------------------------------------------------
 
+
 -- Continuar filtrar citacao na tela consultacitacao
+	- no citacaoDAO, é preciso utilizar um método que converta a tag em idtag
 - Cadastrar, alterar if tag!=null?
-- Problema em duplicação de tags (após alterar deveria apagar tags?)
+- Tem que ver coisas do tipo, se cadastra dois seguidos, acho que as tags do anterior continuam registradas mesmo que não apareçam (ao cadastrar uma mesma no segundo, aparece a mensagem tag já cadastrada)
 
 TABELAS
 - trocar em neuropsi os vários selecionaDados por tipos segundo o número de colunas e associar às variáveis String tableN
 
 ALTERAR TAG
 RORSCHACH
+
+select y.citacao from (select * from citacao_tag where tag=22 or tag=23) as y inner join (select * from citacao_tag where tag=21) as x on y.citacao=x.citacao

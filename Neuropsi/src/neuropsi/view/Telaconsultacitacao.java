@@ -145,7 +145,8 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     Collection <String> tags=new ArrayList();
     private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
-        /*tags.add((String)jComboBoxTagConsulta.getSelectedItem());
+        //lista as tags selecionadas no JLabel
+        tags.add((String)jComboBoxTagConsulta.getSelectedItem());
         String listaTags="";
         for(String tag:tags){
             listaTags+=tag+",";
@@ -155,21 +156,43 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
         }else{
             jLabelTagsConsulta.setText("");
         }
+        //
         
+        
+        CitacaoController cc=new CitacaoController();
+        /* ESSA PARTE É REDUNANTE, AS TAGS JÁ ESTÃO LISTADAS
+        try {
+            tags = cc.listarTags();
+        } catch (ExceptionDAO ex) {
+            Logger.getLogger(Telatranstornos.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+        for(String tag:tags){
+            getjComboBoxTagConsulta().addItem(tag);
+        }
+        
+        //
+        int n=0;
+        ArrayList<Citacao> filtroCitacao=new ArrayList<>();
         try{
-            DefaultTableModel tableModel=(DefaultTableModel)jTableConsultaCitacao.getModel();
+            DefaultTableModel tableModel=(DefaultTableModel)getjTableConsultaCitacao().getModel();
             
-            CitacaoController cc=new CitacaoController();
-            ArrayList<Citacao> listaCitacao=cc.filtrarCitacao(tags);
+            //CitacaoController cc=new CitacaoController();
+            ArrayList<Citacao> listaCitacao=cc.listarCitacao();
             
             Iterator<Citacao> iterator=listaCitacao.iterator();
             while(iterator.hasNext()){
                 Citacao c=iterator.next();
+                for(String tag:tags){
+                    if(c.getTags().contains(tag)){
+                        n+=1;
+                    }
+                }
+                
                 tableModel.addRow(new Object[]{c.getIdcitacao(),c.getFonte(),c.getDescricao(),c.getComentarios()});
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,"Erro: "+e);
-        }*/
+        }
     }//GEN-LAST:event_jButtonFiltrarActionPerformed
 
     private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed

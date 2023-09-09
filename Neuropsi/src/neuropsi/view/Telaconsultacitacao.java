@@ -145,6 +145,7 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     Collection <String> tags=new ArrayList();
     private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
+        jComboBoxTagConsulta.removeAllItems();
         //lista as tags selecionadas no JLabel
         tags.add((String)jComboBoxTagConsulta.getSelectedItem());
         String listaTags="";
@@ -166,7 +167,7 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
         CitacaoController cc=new CitacaoController();
         int n=0;
         try{
-            jComboBoxTagConsulta.removeAllItems();
+            
             ArrayList<Citacao> filtroCitacao=new ArrayList<>();
             ArrayList<Citacao> listaCitacao=cc.listarCitacao();
             
@@ -189,14 +190,22 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
             while(iteratorF.hasNext()){
                 Citacao c=iteratorF.next();
                 tableModel.addRow(new Object[]{c.getIdcitacao(),c.getFonte(),c.getDescricao(),c.getComentarios()});
+                ArrayList<String> tagsAtuais=new ArrayList<>();
+                for(int i=0;i<jComboBoxTagConsulta.getComponentCount();i+=1){
+                    tagsAtuais.add(jComboBoxTagConsulta.getItemAt(i));
+                }
                 for(String tag:c.getTags()){
-                    jComboBoxTagConsulta.addItem(tag);
+                    if(tagsAtuais.contains(tag)){
+                    }else{
+                        jComboBoxTagConsulta.addItem(tag);
+                    }
                 }
             }
             
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,"Erro: "+e);
         }
+        jComboBoxTagConsulta.removeItem(jComboBoxTagConsulta.getSelectedItem());
     }//GEN-LAST:event_jButtonFiltrarActionPerformed
 
     private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed

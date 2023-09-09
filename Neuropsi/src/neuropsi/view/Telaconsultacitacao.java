@@ -173,6 +173,7 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
             Iterator<Citacao> iterator=listaCitacao.iterator();
             while(iterator.hasNext()){
                 Citacao c=iterator.next();
+                c.setTags(cc.coletarTags(c.getIdcitacao()));
                 for(String tag:tags){
                     if(c.getTags().contains(tag)){
                         n+=1;
@@ -183,9 +184,10 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
                 n=0;
             }
             Iterator<Citacao> iteratorF=filtroCitacao.iterator();
+            DefaultTableModel tableModel=(DefaultTableModel)jTableConsultaCitacao.getModel();
+            tableModel.setRowCount(0);
             while(iteratorF.hasNext()){
                 Citacao c=iteratorF.next();
-                DefaultTableModel tableModel=(DefaultTableModel)getjTableConsultaCitacao().getModel();
                 tableModel.addRow(new Object[]{c.getIdcitacao(),c.getFonte(),c.getDescricao(),c.getComentarios()});
                 for(String tag:c.getTags()){
                     jComboBoxTagConsulta.addItem(tag);

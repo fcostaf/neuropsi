@@ -20,8 +20,9 @@ v- Excluir citacao
 ----------------------------------------------------------------------------------------------
 
 
--- Continuar filtrar citacao na tela consultacitacao
-	- no citacaoDAO, é preciso utilizar um método que converta a tag em idtag
+FILTRAR CITACAO
+	- evitar tags repetidas nos sucessivos filtros
+	- botao limpar e/ou remover filtros
 - Cadastrar, alterar if tag!=null?
 - Tem que ver coisas do tipo, se cadastra dois seguidos, acho que as tags do anterior continuam registradas mesmo que não apareçam (ao cadastrar uma mesma no segundo, aparece a mensagem tag já cadastrada)
 

@@ -21,7 +21,7 @@ v- Excluir citacao
 
 
 FILTRAR CITACAO
-	- evitar tags repetidas nos sucessivos filtros
+	v- evitar tags repetidas nos sucessivos filtros
 	- botao limpar e/ou remover filtros
 - Cadastrar, alterar if tag!=null?
 - Tem que ver coisas do tipo, se cadastra dois seguidos, acho que as tags do anterior continuam registradas mesmo que não apareçam (ao cadastrar uma mesma no segundo, aparece a mensagem tag já cadastrada)

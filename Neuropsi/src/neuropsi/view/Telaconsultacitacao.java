@@ -148,10 +148,7 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
     Collection <String> tags=new ArrayList();
     private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
         
-        ArrayList<String> tagsRelevantes=new ArrayList<>();
-        
-        //lista as tags selecionadas no JLabel
-        
+        //adiciona a tag do jCombo à tags e lista as tags adiconadas no JLabel
         tags.add((String)jComboBoxTagConsulta.getSelectedItem());
         String listaTags="";
         for(String tag:tags){
@@ -162,15 +159,16 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
         }else{
             jLabelTagsConsulta.setText("");
         }
-        
         //
         
+        ArrayList<String> tagsRelevantes=new ArrayList<>();
         CitacaoController cc=new CitacaoController();
         int n=0;
-        try{    
-            ArrayList<Citacao> filtroCitacao=new ArrayList<>();
+        try{
+            //lista todas as citações, coleta as tags de cada citação e soma a n número de tags que também estão em tags(Array)
+            //se n for igual ao tamanho de tags(Array), quer dizer que a citação possui todas as tags do filtro e é adicionada ao filtroCitacao
             ArrayList<Citacao> listaCitacao=cc.listarCitacao();
-            
+            ArrayList<Citacao> filtroCitacao=new ArrayList<>();
             Iterator<Citacao> iterator=listaCitacao.iterator();
             while(iterator.hasNext()){
                 Citacao c=iterator.next();
@@ -184,11 +182,15 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
                 }
                 n=0;
             }
+            //
+            
+            //citações do filtroCitacao são adicionadas à tabela
+            //adiciona à tagsRelevantes as tags de cada citação que ainda não estão nessa lista
             Iterator<Citacao> iteratorF=filtroCitacao.iterator();
             DefaultTableModel tableModel=(DefaultTableModel)jTableConsultaCitacao.getModel();
             tableModel.setRowCount(0);
             while(iteratorF.hasNext()){
-                jComboBoxTagConsulta.removeAllItems();
+                
                 Citacao c=iteratorF.next();
                 tableModel.addRow(new Object[]{c.getIdcitacao(),c.getFonte(),c.getDescricao(),c.getComentarios()});
                 for(String tag:c.getTags()){
@@ -197,21 +199,18 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
                         tagsRelevantes.add(tag);
                     }
                 }
-                //ArrayList<String> tagsAtuais=new ArrayList<>();
-                //for(int i=0;i<jComboBoxTagConsulta.getComponentCount();i+=1){
-                    //tagsAtuais.add(jComboBoxTagConsulta.getItemAt(i));
-                //}
-                //for(String tag:c.getTags()){
-                    //if(tagsAtuais.contains(tag)){
-                    //}else{
-                        //jComboBoxTagConsulta.addItem(tag);
-                    //}
-                //}
             }
+            //
             
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,"Erro: "+e);
         }
+        
+        //deleta todos os itens do jCombo
+        //seleciona as tags de tagsRelevantes que estão em tags(Array), para serem deletadas de tagsRelevantes
+        //adiciona cada tag que sobrou de tagsRelevantes ao jCombo
+        //agora o jCombo só possui tags referentes às citações da tabela atual
+        jComboBoxTagConsulta.removeAllItems();
         ArrayList<String> tagsDel=new ArrayList<>();
         for(String tag:tagsRelevantes){
             if(tags.contains(tag)){

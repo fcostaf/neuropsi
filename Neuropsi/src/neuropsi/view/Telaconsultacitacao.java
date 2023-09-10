@@ -57,6 +57,7 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
         jButtonFechar = new javax.swing.JButton();
         jButtonRemover = new javax.swing.JButton();
         jComboBoxRemover = new javax.swing.JComboBox<>();
+        jButtonLimpar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,6 +103,18 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
         });
 
         jButtonRemover.setText("Remover");
+        jButtonRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRemoverActionPerformed(evt);
+            }
+        });
+
+        jButtonLimpar.setText("Limpar");
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimparActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,9 +143,13 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
                                 .addGap(33, 33, 33)
                                 .addComponent(jComboBoxRemover, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(299, 299, 299)
                         .addComponent(jLabelTagsConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(116, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButtonLimpar)
+                .addGap(378, 378, 378))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,7 +164,9 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jButtonFiltrar)
                             .addComponent(jButtonRemover))
-                        .addGap(90, 90, 90)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonLimpar)
+                        .addGap(49, 49, 49)
                         .addComponent(jLabelTagsConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -162,21 +181,8 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     Collection <String> tags=new ArrayList();
-    private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
-        
-        //adiciona a tag do jCombo à tags e lista as tags adiconadas no JLabel
-        tags.add((String)jComboBoxTagConsulta.getSelectedItem());
-        String listaTags="";
-        for(String tag:tags){
-            listaTags+=tag+",";
-        }
-        if(tags.size()>=1){
-            jLabelTagsConsulta.setText(listaTags.substring(0, listaTags.length()-1));
-        }else{
-            jLabelTagsConsulta.setText("");
-        }
-        //
-        
+    
+    private void executaFiltro(){
         ArrayList<String> tagsRelevantes=new ArrayList<>();
         CitacaoController cc=new CitacaoController();
         int n=0;
@@ -239,6 +245,32 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
         for(String tag:tagsRelevantes){
             jComboBoxTagConsulta.addItem(tag);
         }
+        //
+        
+        //adicona as tags do filtro (tags(Array)) ao JComboBoxRemover
+        jComboBoxRemover.removeAllItems();
+        for(String tag:tags){
+            jComboBoxRemover.addItem(tag);
+        }
+        //
+        
+        //lista tags(Array) no JLabel
+        String listaTags="";
+        for(String tag:tags){
+            listaTags+=tag+",";
+        }
+        if(tags.size()>=1){
+            jLabelTagsConsulta.setText(listaTags.substring(0, listaTags.length()-1));
+        }else{
+            jLabelTagsConsulta.setText("");
+        }
+        //
+    }
+    private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
+        //adiciona a tag do jCombo à tags
+        tags.add((String)jComboBoxTagConsulta.getSelectedItem());
+        //
+        executaFiltro();
     }//GEN-LAST:event_jButtonFiltrarActionPerformed
 
     private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed
@@ -265,6 +297,17 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
             ttra.getjButtonExcluir1().setEnabled(true);
         }
     }//GEN-LAST:event_jTableConsultaCitacaoMouseClicked
+
+    private void jButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverActionPerformed
+        String tagRemover=(String)jComboBoxRemover.getSelectedItem();
+        tags.remove(tagRemover);
+        executaFiltro();
+    }//GEN-LAST:event_jButtonRemoverActionPerformed
+
+    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
+        tags.removeAll(tags);
+        executaFiltro();
+    }//GEN-LAST:event_jButtonLimparActionPerformed
 
     /**
      * @param args the command line arguments
@@ -304,6 +347,7 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonFechar;
     private javax.swing.JButton jButtonFiltrar;
+    private javax.swing.JButton jButtonLimpar;
     private javax.swing.JButton jButtonRemover;
     private javax.swing.JComboBox<String> jComboBoxRemover;
     private javax.swing.JComboBox<String> jComboBoxTagConsulta;

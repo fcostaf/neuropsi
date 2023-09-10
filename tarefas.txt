@@ -23,6 +23,8 @@ v- Excluir citacao
 FILTRAR CITACAO
 	v- evitar tags repetidas nos sucessivos filtros
 	- botao limpar e/ou remover filtros
+		- probleminha dá null no jlabel das tags e dá item vazio em jcomboremover quando se remove uma tag 			específica da seleção de filtros (qual?)
+
 - Cadastrar, alterar if tag!=null?
 - Tem que ver coisas do tipo, se cadastra dois seguidos, acho que as tags do anterior continuam registradas mesmo que não apareçam (ao cadastrar uma mesma no segundo, aparece a mensagem tag já cadastrada)
 

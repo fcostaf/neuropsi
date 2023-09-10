@@ -149,7 +149,9 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
     private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
         
         ArrayList<String> tagsRelevantes=new ArrayList<>();
+        
         //lista as tags selecionadas no JLabel
+        
         tags.add((String)jComboBoxTagConsulta.getSelectedItem());
         String listaTags="";
         for(String tag:tags){
@@ -160,17 +162,12 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
         }else{
             jLabelTagsConsulta.setText("");
         }
+        
         //
-        /* ESSA PARTE É REDUNANTE, AS TAGS JÁ ESTÃO LISTADAS
-        try {
-            tags = cc.listarTags();
-        } catch (ExceptionDAO ex) {
-            Logger.getLogger(Telatranstornos.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        
         CitacaoController cc=new CitacaoController();
         int n=0;
-        try{
-            
+        try{    
             ArrayList<Citacao> filtroCitacao=new ArrayList<>();
             ArrayList<Citacao> listaCitacao=cc.listarCitacao();
             

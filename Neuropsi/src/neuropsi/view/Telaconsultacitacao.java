@@ -8,7 +8,9 @@ package neuropsi.view;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -180,7 +182,7 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    Collection <String> tags=new ArrayList();
+    ArrayList <String> tags=new ArrayList();
     
     private void executaFiltro(){
         ArrayList<String> tagsRelevantes=new ArrayList<>();
@@ -205,7 +207,9 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
                 n=0;
             }
             //
-            
+            //ordena tags alfabeticamente
+        Collections.sort(tags);
+        //
             //citações do filtroCitacao são adicionadas à tabela
             //adiciona à tagsRelevantes as tags de cada citação que ainda não estão nessa lista
             Iterator<Citacao> iteratorF=filtroCitacao.iterator();
@@ -228,10 +232,14 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Erro: "+e);
         }
         
+        //ordena as tags alfabeticamente
         //deleta todos os itens do jCombo
         //seleciona as tags de tagsRelevantes que estão em tags(Array), para serem deletadas de tagsRelevantes
         //adiciona cada tag que sobrou de tagsRelevantes ao jCombo
         //agora o jCombo só possui tags referentes às citações da tabela atual
+        
+        Collections.sort(tags);
+        Collections.sort(tagsRelevantes);
         jComboBoxTagConsulta.removeAllItems();
         ArrayList<String> tagsDel=new ArrayList<>();
         for(String tag:tagsRelevantes){
@@ -246,6 +254,8 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
             jComboBoxTagConsulta.addItem(tag);
         }
         //
+        
+        
         
         //adicona as tags do filtro (tags(Array)) ao JComboBoxRemover
         jComboBoxRemover.removeAllItems();

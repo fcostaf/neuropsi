@@ -6,8 +6,10 @@
 package neuropsi.view;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -145,7 +147,8 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     Collection <String> tags=new ArrayList();
     private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
-        jComboBoxTagConsulta.removeAllItems();
+        
+        ArrayList<String> tagsRelevantes=new ArrayList<>();
         //lista as tags selecionadas no JLabel
         tags.add((String)jComboBoxTagConsulta.getSelectedItem());
         String listaTags="";
@@ -188,24 +191,42 @@ public class Telaconsultacitacao extends javax.swing.JFrame {
             DefaultTableModel tableModel=(DefaultTableModel)jTableConsultaCitacao.getModel();
             tableModel.setRowCount(0);
             while(iteratorF.hasNext()){
+                jComboBoxTagConsulta.removeAllItems();
                 Citacao c=iteratorF.next();
                 tableModel.addRow(new Object[]{c.getIdcitacao(),c.getFonte(),c.getDescricao(),c.getComentarios()});
-                ArrayList<String> tagsAtuais=new ArrayList<>();
-                for(int i=0;i<jComboBoxTagConsulta.getComponentCount();i+=1){
-                    tagsAtuais.add(jComboBoxTagConsulta.getItemAt(i));
-                }
                 for(String tag:c.getTags()){
-                    if(tagsAtuais.contains(tag)){
+                    if(tagsRelevantes.contains(tag)){
                     }else{
-                        jComboBoxTagConsulta.addItem(tag);
+                        tagsRelevantes.add(tag);
                     }
                 }
+                //ArrayList<String> tagsAtuais=new ArrayList<>();
+                //for(int i=0;i<jComboBoxTagConsulta.getComponentCount();i+=1){
+                    //tagsAtuais.add(jComboBoxTagConsulta.getItemAt(i));
+                //}
+                //for(String tag:c.getTags()){
+                    //if(tagsAtuais.contains(tag)){
+                    //}else{
+                        //jComboBoxTagConsulta.addItem(tag);
+                    //}
+                //}
             }
             
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,"Erro: "+e);
         }
-        jComboBoxTagConsulta.removeItem(jComboBoxTagConsulta.getSelectedItem());
+        ArrayList<String> tagsDel=new ArrayList<>();
+        for(String tag:tagsRelevantes){
+            if(tags.contains(tag)){
+                tagsDel.add(tag);
+            }
+        }
+        for(String tag:tagsDel){
+            tagsRelevantes.remove(tag);
+        }
+        for(String tag:tagsRelevantes){
+            jComboBoxTagConsulta.addItem(tag);
+        }
     }//GEN-LAST:event_jButtonFiltrarActionPerformed
 
     private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed

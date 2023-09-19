@@ -21,6 +21,8 @@ public class Neuropsi {
         
         
     }
+    public static String c;
+    
     public static Telacadastropacientes tcad=new Telacadastropacientes();
     public static Telainicial tinit=new Telainicial();
     public static Telaavaliacao tava=new Telaavaliacao();

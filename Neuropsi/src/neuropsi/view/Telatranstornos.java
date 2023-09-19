@@ -74,6 +74,7 @@ public class Telatranstornos extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextAreaComentarios = new javax.swing.JTextArea();
+        jButtonExportarCitacao = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -186,6 +187,13 @@ public class Telatranstornos extends javax.swing.JFrame {
         jTextAreaComentarios.setWrapStyleWord(true);
         jScrollPane3.setViewportView(jTextAreaComentarios);
 
+        jButtonExportarCitacao.setText("Exportar");
+        jButtonExportarCitacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExportarCitacaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -217,27 +225,32 @@ public class Telatranstornos extends javax.swing.JFrame {
                                         .addComponent(jButtonBuscarCitacao))
                                     .addComponent(jScrollPane2)
                                     .addComponent(jTextFieldFonte))))
-                        .addGap(43, 43, 43)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(43, 43, 43)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addGap(31, 31, 31)
-                                        .addComponent(jComboBoxTags, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextFieldNovaTag)))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButtonAdicionar)
-                                    .addComponent(jButtonIncluir)
-                                    .addComponent(jButtonRemover)
-                                    .addComponent(jButtonExcluirTag)))
-                            .addComponent(jLabel9)
-                            .addComponent(jScrollPane3)
-                            .addComponent(jLabelTags, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jLabel6)
+                                                .addGap(31, 31, 31)
+                                                .addComponent(jComboBoxTags, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jLabel8)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jTextFieldNovaTag)))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jButtonAdicionar)
+                                            .addComponent(jButtonIncluir)
+                                            .addComponent(jButtonRemover)
+                                            .addComponent(jButtonExcluirTag)))
+                                    .addComponent(jLabel9)
+                                    .addComponent(jScrollPane3)
+                                    .addComponent(jLabelTags, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(146, 146, 146)
+                                .addComponent(jButtonExportarCitacao)))))
                 .addContainerGap(129, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -279,7 +292,8 @@ public class Telatranstornos extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonLimpar1)
                     .addComponent(jButtonAlterar1)
-                    .addComponent(jButtonExcluir1))
+                    .addComponent(jButtonExcluir1)
+                    .addComponent(jButtonExportarCitacao))
                 .addGap(52, 52, 52)
                 .addComponent(jButtonFechar)
                 .addContainerGap(128, Short.MAX_VALUE))
@@ -668,6 +682,15 @@ public class Telatranstornos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonExcluirTagActionPerformed
 
+    private void jButtonExportarCitacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportarCitacaoActionPerformed
+        String fonte=getjTextFieldFonte().getText();
+        String citacao=getjTextAreaCitacao().getText();
+        String comentarios=getjTextAreaComentarios().getText();
+        String tags=getjLabelTags().getText();
+        
+        citacao(fonte, citacao, comentarios, tags);
+    }//GEN-LAST:event_jButtonExportarCitacaoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -718,6 +741,7 @@ public class Telatranstornos extends javax.swing.JFrame {
     private javax.swing.JButton jButtonExcluir;
     private javax.swing.JButton jButtonExcluir1;
     private javax.swing.JButton jButtonExcluirTag;
+    private javax.swing.JButton jButtonExportarCitacao;
     private javax.swing.JButton jButtonFechar;
     private javax.swing.JButton jButtonIncluir;
     private javax.swing.JButton jButtonLimpar;
@@ -1115,6 +1139,11 @@ public class Telatranstornos extends javax.swing.JFrame {
             }else{
                 jLabelTags.setText("");
             }
+    }
+    
+    public String citacao(String fonte,String citacao,String comentarios,String tags){
+        String cit=fonte+" / "+citacao+" / "+comentarios+" / "+tags;
+        return cit;
     }
 
 
